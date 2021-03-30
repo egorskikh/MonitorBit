@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D91" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="BTC" representedClassName="BTC" syncable="YES">
+        <attribute name="forUser" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="CurrencyPrices" representedClassName="CurrencyPrices" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="eur" optional="YES" attributeType="String"/>
+        <attribute name="rub" optional="YES" attributeType="String"/>
+        <attribute name="upd" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="BTC" positionX="-45" positionY="0" width="128" height="44"/>
+        <element name="CurrencyPrices" positionX="-18" positionY="27" width="128" height="89"/>
+    </elements>
 </model>

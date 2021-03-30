@@ -18,6 +18,7 @@
 		7B9090E1260CF62B002EE383 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B9090DF260CF62B002EE383 /* LaunchScreen.storyboard */; };
 		7B9090F9260CF990002EE383 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9090F8260CF990002EE383 /* NetworkService.swift */; };
 		7B9090FE260CF9AF002EE383 /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9090FD260CF9AF002EE383 /* NetworkDataFetcher.swift */; };
+		7BD34D2A2611E53100A59650 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD34D292611E53100A59650 /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		7B9090E2260CF62B002EE383 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B9090F8260CF990002EE383 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		7B9090FD260CF9AF002EE383 /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
+		7BD34D292611E53100A59650 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				7B9090DA260CF625002EE383 /* MonitorBit.xcdatamodeld */,
+				7BD34D292611E53100A59650 /* CoreDataStack.swift */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 				7B9090D6260CF625002EE383 /* ViewController.swift in Sources */,
 				7B433D69260E7DDC00432003 /* BTCCell.swift in Sources */,
 				7B9090D2260CF625002EE383 /* AppDelegate.swift in Sources */,
+				7BD34D2A2611E53100A59650 /* CoreDataStack.swift in Sources */,
 				7B9090DC260CF625002EE383 /* MonitorBit.xcdatamodeld in Sources */,
 				7B9090D4260CF625002EE383 /* SceneDelegate.swift in Sources */,
 				7B9090FE260CF9AF002EE383 /* NetworkDataFetcher.swift in Sources */,
