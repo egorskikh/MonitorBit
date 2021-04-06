@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BTCCell: UITableViewCell {
+class BtcCell: UITableViewCell {
     
     static let reuseID = "BTCCell"
     
@@ -17,10 +17,11 @@ class BTCCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     
     
-    // MARK: - View Life Cycle
-    override func prepareForReuse() {
-      super.prepareForReuse()
-
+    func configuratinCell(upd: String, eur: String, rub: String, date: String) {
+        self.updLabel.text = upd
+        self.eurLabel.text = eur
+        self.rubLabel.text = rub
+        self.dateLabel.text = date
     }
     
 }

@@ -2,15 +2,17 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D91" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="BTC" representedClassName="BTC" syncable="YES">
         <attribute name="forUser" optional="YES" attributeType="String"/>
+        <relationship name="history" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="CurrencyPrices" inverseName="btc" inverseEntity="CurrencyPrices"/>
     </entity>
-    <entity name="CurrencyPrices" representedClassName="CurrencyPrices" syncable="YES" codeGenerationType="class">
+    <entity name="CurrencyPrices" representedClassName="CurrencyPrices" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="eur" optional="YES" attributeType="String"/>
         <attribute name="rub" optional="YES" attributeType="String"/>
         <attribute name="upd" optional="YES" attributeType="String"/>
+        <relationship name="btc" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BTC" inverseName="history" inverseEntity="BTC"/>
     </entity>
     <elements>
-        <element name="BTC" positionX="-45" positionY="0" width="128" height="44"/>
-        <element name="CurrencyPrices" positionX="-18" positionY="27" width="128" height="89"/>
+        <element name="BTC" positionX="161.4646606445312" positionY="6760.942718505859" width="105.1192626953125" height="73"/>
+        <element name="CurrencyPrices" positionX="663.0252075195312" positionY="6555.890167236328" width="128" height="118"/>
     </elements>
 </model>

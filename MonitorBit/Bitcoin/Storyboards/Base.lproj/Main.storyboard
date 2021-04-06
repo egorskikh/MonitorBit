@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--BtcVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MonitorBit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="BtcVC" customModule="MonitorBit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -55,7 +55,7 @@
                                 <rect key="frame" x="0.0" y="218" width="414" height="678"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BTCCell" rowHeight="91" id="rOz-GF-iSM" customClass="BTCCell" customModule="MonitorBit" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BTCCell" rowHeight="91" id="rOz-GF-iSM" customClass="BtcCell" customModule="MonitorBit" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="91"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rOz-GF-iSM" id="doQ-Pp-OS6">
@@ -127,11 +127,11 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KRk-pM-aAb">
-                                <rect key="frame" x="345" y="108" width="49" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00/00/00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KRk-pM-aAb">
+                                <rect key="frame" x="324" y="189" width="74" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20.5" id="0s4-I3-hif"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="49" id="1G3-57-vG7"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="74" id="cwB-4T-yYN"/>
+                                    <constraint firstAttribute="height" constant="21" id="v96-fe-kDg"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -142,17 +142,17 @@
                         <color key="backgroundColor" systemColor="systemGrayColor"/>
                         <constraints>
                             <constraint firstItem="sZy-MC-7yF" firstAttribute="leading" secondItem="I03-XK-IaG" secondAttribute="trailing" constant="8" symbolic="YES" id="41b-xS-lSu"/>
+                            <constraint firstItem="KRk-pM-aAb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="230" id="6cM-uW-gqe"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="rO8-EK-qeB" secondAttribute="bottom" constant="-34" id="8ym-P1-KRx"/>
                             <constraint firstItem="rO8-EK-qeB" firstAttribute="top" secondItem="sZy-MC-7yF" secondAttribute="bottom" constant="28.5" id="9n7-wN-Vqe"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KRk-pM-aAb" secondAttribute="trailing" constant="20" id="L3z-UY-MjQ"/>
                             <constraint firstItem="rO8-EK-qeB" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="Lv2-xc-bel"/>
+                            <constraint firstItem="rO8-EK-qeB" firstAttribute="top" secondItem="KRk-pM-aAb" secondAttribute="bottom" constant="8" symbolic="YES" id="SXW-vr-s4z"/>
                             <constraint firstItem="I03-XK-IaG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="49" id="V2p-bf-g56"/>
                             <constraint firstItem="rO8-EK-qeB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Vej-Ta-8u6"/>
                             <constraint firstItem="sZy-MC-7yF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="18" id="Wi7-pl-J2M"/>
                             <constraint firstItem="I03-XK-IaG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="36" id="cHu-G9-AXx"/>
                             <constraint firstItem="sZy-MC-7yF" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ce8-w0-Ecn"/>
-                            <constraint firstItem="KRk-pM-aAb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="f3T-yu-7xZ"/>
-                            <constraint firstItem="KRk-pM-aAb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="sZy-MC-7yF" secondAttribute="trailing" constant="20" id="zn4-Ev-GXa"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KRk-pM-aAb" secondAttribute="trailing" constant="16" id="zSH-cv-rBy"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0xT-bD-m9R">
@@ -173,7 +173,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="868.11594202898561" y="55.580357142857139"/>
+            <point key="canvasLocation" x="866.25" y="54.929577464788736"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wzH-gg-WU0">
