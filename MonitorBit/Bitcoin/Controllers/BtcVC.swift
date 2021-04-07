@@ -22,6 +22,7 @@ class BtcVC: UIViewController {
     }()
     
     let networkDataFetcher = NetworkDataFetcher()
+    
     var priceHistoryBtc: [BTC] = []
     
     
@@ -43,13 +44,13 @@ class BtcVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.fetch { (compete) in
-            print("The saved data is shown - \(compete)")
-        }
+        
+        fetch()
     }
     
     // MARK: - Action
     @IBAction func add(_ sender: UIBarButtonItem) {
+        
         guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
         let btc = BTC(context: managedContext)
         
@@ -64,8 +65,10 @@ class BtcVC: UIViewController {
         } catch {
             debugPrint("Could not save: \(error.localizedDescription)")
         }
-        tableView.reloadData()
+        fetch()
+        self.tableView.reloadData()
     }
+    
 }
 
 // MARK: - Setup Method
@@ -119,22 +122,49 @@ extension BtcVC: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        print(#function)
+        
+        removeBTC(atIndexPath: indexPath)
+        fetch()
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
+    
 }
 
 // MARK: - Core Data Fetch
 extension BtcVC {
     
-    func fetch(completion: (_ complete: Bool) -> () ) {
+    func removeBTC(atIndexPath indexPath: IndexPath) {
+        guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
+        
+        managedContext.delete(priceHistoryBtc[indexPath.row])
+        
+        do {
+            try managedContext.save()
+            print("Successfule remove goal.")
+        } catch {
+            debugPrint("Could dont remove: \(error.localizedDescription)")
+        }
+    }
+    
+    func fetch() {
         guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
         let fetchRequest = NSFetchRequest<BTC>(entityName: "BTC")
         
         do {
             priceHistoryBtc = try managedContext.fetch(fetchRequest)
-            print("Successfuly fetched data.")
-            completion(true)
+            print("Successfuly FETCHED data.")
         } catch {
             debugPrint("Could not fetch: \(error.localizedDescription)")
-            completion(false)
         }
     }
     
