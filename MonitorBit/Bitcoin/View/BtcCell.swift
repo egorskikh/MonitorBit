@@ -16,12 +16,11 @@ class BtcCell: UITableViewCell {
     @IBOutlet weak var rubLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
-    
-    func configuratinCell(upd: String, eur: String, rub: String, date: String) {
-        self.updLabel.text = upd
-        self.eurLabel.text = eur
-        self.rubLabel.text = rub
-        self.dateLabel.text = date
+    func configuratinCell(_ btc: BTC) {
+        self.updLabel.text = btc.upd
+        self.eurLabel.text = btc.eur
+        self.rubLabel.text = btc.rub
+        self.dateLabel.text = btc.date
     }
     
 }

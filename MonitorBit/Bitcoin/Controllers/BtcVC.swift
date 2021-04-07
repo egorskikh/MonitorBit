@@ -13,7 +13,6 @@ let appDelegate = UIApplication.shared.delegate as? AppDelegate
 class BtcVC: UIViewController {
     
     // MARK: - Property
-    
     lazy var formattedDate: String = {
         let time = NSDate()
         let formatter = DateFormatter()
@@ -23,6 +22,7 @@ class BtcVC: UIViewController {
     }()
     
     let networkDataFetcher = NetworkDataFetcher()
+    var priceHistoryBtc: [BTC] = []
     
     
     // MARK: - IBOutlets
@@ -35,18 +35,21 @@ class BtcVC: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     
     // MARK: - View Life Cicle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        fetchDataBTC()
+        fetchJSONDataBTC()
         setupTableView()
     }
     
-    // MARK: - Action
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.fetch { (compete) in
+            print("The saved data is shown - \(compete)")
+        }
+    }
     
+    // MARK: - Action
     @IBAction func add(_ sender: UIBarButtonItem) {
-        // CoreDataStack
         guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
         let btc = BTC(context: managedContext)
         
@@ -57,22 +60,15 @@ class BtcVC: UIViewController {
         
         do {
             try managedContext.save()
-            print("ееее")
+            print("Successfuly SAVED data")
         } catch {
             debugPrint("Could not save: \(error.localizedDescription)")
-            print("неееет...")
         }
-        
         tableView.reloadData()
     }
-    
-    
-    
 }
 
-
 // MARK: - Setup Method
-
 extension BtcVC {
     
     private func setupTableView() {
@@ -83,7 +79,7 @@ extension BtcVC {
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
-    private func fetchDataBTC() {
+    private func fetchJSONDataBTC() {
         
         networkDataFetcher.fetchСourse { (fetchСourse) in
             guard let course = fetchСourse else { return }
@@ -93,13 +89,11 @@ extension BtcVC {
             self.btcEqual.text = "1 BTC ="
             self.dateLabel.text = self.formattedDate
         }
-        
     }
     
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
-
 extension BtcVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -111,7 +105,7 @@ extension BtcVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return priceHistoryBtc.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -120,11 +114,28 @@ extension BtcVC: UITableViewDataSource, UITableViewDelegate {
         else {
             return UITableViewCell()
         }
-        cell.configuratinCell(upd: updLabel.text ?? " ",
-                              eur: eurLabel.text ?? " ",
-                              rub: rubLabel.text ?? " ",
-                              date: dateLabel.text ?? " ")
+        let btc = priceHistoryBtc[indexPath.row]
+        cell.configuratinCell(btc)
         return cell
+    }
+    
+}
+
+// MARK: - Core Data Fetch
+extension BtcVC {
+    
+    func fetch(completion: (_ complete: Bool) -> () ) {
+        guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
+        let fetchRequest = NSFetchRequest<BTC>(entityName: "BTC")
+        
+        do {
+            priceHistoryBtc = try managedContext.fetch(fetchRequest)
+            print("Successfuly fetched data.")
+            completion(true)
+        } catch {
+            debugPrint("Could not fetch: \(error.localizedDescription)")
+            completion(false)
+        }
     }
     
 }

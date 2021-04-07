@@ -12,14 +12,11 @@ final class NetworkDataFetcher {
     var networkService = NetworkService()
     
     func fetchСourse(completion: @escaping (BitcoinResponse?) -> ()) {
-
         networkService.request() { (data, error) in
-            
             if let error = error {
                 print("Error received requesting data: \(error.localizedDescription)")
                 completion(nil)
             }
-            
             let decode = self.decodeJSON(type: BitcoinResponse.self, from: data)
             completion(decode)
         }
