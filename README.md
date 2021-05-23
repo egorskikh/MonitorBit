@@ -19,6 +19,7 @@ Stack:
 
 ## Add later
 
-- [ ] Add background animation of flying currency emblems
-- [ ] Add sorting by price > && <
-- [ ] Add a second view controller with the help of a tab bar on which there will be a graph of added prices
+- [ ] Show the current course from pressing the button until the table closes the current course. After clicking, the table slides down and you can see the dragging prices.
+- [ ] Add background animation of flying currency emblems.
+- [ ] Add sorting by price > && <.
+- [ ] Add a second view controller with the help of a tab bar on which there will be a graph of added prices.
