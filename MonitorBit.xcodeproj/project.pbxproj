@@ -18,7 +18,6 @@
 		7B9090F9260CF990002EE383 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9090F8260CF990002EE383 /* NetworkService.swift */; };
 		7B9090FE260CF9AF002EE383 /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9090FD260CF9AF002EE383 /* NetworkDataFetcher.swift */; };
 		7BD4118F261C7A5E00656B40 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7BD4118D261C7A5E00656B40 /* Model.xcdatamodeld */; };
-		7BE29D17265B465800C96D1F /* BtcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE29D16265B465800C96D1F /* BtcView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +34,6 @@
 		7B9090F8260CF990002EE383 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		7B9090FD260CF9AF002EE383 /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
 		7BD4118E261C7A5E00656B40 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		7BE29D16265B465800C96D1F /* BtcView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BtcView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +51,6 @@
 			isa = PBXGroup;
 			children = (
 				7B433D68260E7DDC00432003 /* BtcCell.swift */,
-				7BE29D16265B465800C96D1F /* BtcView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -249,7 +246,6 @@
 				7BD4118F261C7A5E00656B40 /* Model.xcdatamodeld in Sources */,
 				7B9090D4260CF625002EE383 /* SceneDelegate.swift in Sources */,
 				7B9090FE260CF9AF002EE383 /* NetworkDataFetcher.swift in Sources */,
-				7BE29D17265B465800C96D1F /* BtcView.swift in Sources */,
 				7B6E7F0B260D24D000732537 /* BitcoinResponse.swift in Sources */,
 				7B9090F9260CF990002EE383 /* NetworkService.swift in Sources */,
 			);

@@ -25,6 +25,10 @@ class BtcVC: UIViewController {
     
     var priceHistoryBtc: [BTC] = []
     
+    public var questionView: BtcView! {
+         guard isViewLoaded else { return nil }
+         return (view as! BtcView)
+     }
     
     // MARK: - IBOutlets
     @IBOutlet weak var updLabel: UILabel!
@@ -38,14 +42,15 @@ class BtcVC: UIViewController {
     // MARK: - View Life Cicle
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchJSON()
-        setupTableView()
+        questionView.backgroundColor = .green
+//        fetchJSON()
+//        setupTableView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        fetchCoreData()
+//        fetchCoreData()
     }
     
     // MARK: - Action
