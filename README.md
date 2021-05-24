@@ -20,7 +20,7 @@ Stack:
 ## Add later
 
 - [x] If there is no data, the results are not saved
-- [ ] Get rid of the storyboard entirely.
+- [x] Get rid of the storyboard entirely.
 - [ ] Show the current course when the button is pressed. The table will move down, and the current bitcoin rate will be visible.
 - [ ] Add background animation of flying currency emblems.
 - [ ] Add sorting by price (> && <).
