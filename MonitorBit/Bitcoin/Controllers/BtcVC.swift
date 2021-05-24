@@ -51,6 +51,8 @@ class BtcVC: UIViewController {
     // MARK: - Action
     @IBAction func add(_ sender: UIBarButtonItem) {
         
+        if updLabel.text == "" { return }
+        
         guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
         let btc = BTC(context: managedContext)
         
