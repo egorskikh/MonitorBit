@@ -16,7 +16,7 @@ class BtcVC: UIViewController {
     lazy var formattedDate: String = {
         let time = NSDate()
         let formatter = DateFormatter()
-        formatter.dateFormat = "MM/dd/YY"
+        formatter.dateFormat = "dd/MM/YY"
         let formattedDate = formatter.string(from: time as Date)
         return formattedDate
     }()
@@ -38,14 +38,14 @@ class BtcVC: UIViewController {
     // MARK: - View Life Cicle
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchJSONDataBTC()
+        fetchJSON()
         setupTableView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        fetch()
+        fetchCoreData()
     }
     
     // MARK: - Action
@@ -63,11 +63,11 @@ class BtcVC: UIViewController {
         
         do {
             try managedContext.save()
-            print("Successfuly SAVED data")
+            print("Successfuly SAVED Core Data")
         } catch {
-            debugPrint("Could not save: \(error.localizedDescription)")
+            debugPrint("Could NOTE SAVE Core Data: \(error.localizedDescription)")
         }
-        fetch()
+        fetchCoreData()
         self.tableView.reloadData()
     }
     
@@ -84,13 +84,13 @@ extension BtcVC {
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
-    private func fetchJSONDataBTC() {
+    private func fetchJSON() {
         
-        networkDataFetcher.fetchСourse { (fetchСourse) in
-            guard let course = fetchСourse else { return }
-            self.eurLabel.text = String(course.EUR.buy) + " " + String(course.EUR.symbol)
-            self.updLabel.text = String(course.USD.buy) + " " + String(course.USD.symbol)
-            self.rubLabel.text = String(course.RUB.buy) + " " + String(course.RUB.symbol)
+        networkDataFetcher.fetchExchangeRate { (exchangeRate) in
+            guard let exchangeRate = exchangeRate else { return }
+            self.eurLabel.text = String(exchangeRate.EUR.buy) + " " + String(exchangeRate.EUR.symbol)
+            self.updLabel.text = String(exchangeRate.USD.buy) + " " + String(exchangeRate.USD.symbol)
+            self.rubLabel.text = String(exchangeRate.RUB.buy) + " " + String(exchangeRate.RUB.symbol)
             self.btcEqual.text = "1 BTC ="
             self.dateLabel.text = self.formattedDate
         }
@@ -119,8 +119,7 @@ extension BtcVC: UITableViewDataSource, UITableViewDelegate {
         else {
             return UITableViewCell()
         }
-        let btc = priceHistoryBtc[indexPath.row]
-        cell.configuratinCell(btc)
+        cell.configuratinCell(priceHistoryBtc[indexPath.row])
         return cell
     }
     
@@ -133,10 +132,9 @@ extension BtcVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        print(#function)
         
         removeBTC(atIndexPath: indexPath)
-        fetch()
+        fetchCoreData()
         tableView.deleteRows(at: [indexPath], with: .automatic)
     }
     
@@ -152,21 +150,21 @@ extension BtcVC {
         
         do {
             try managedContext.save()
-            print("Successfule remove goal.")
+            print("Successfule REMOVED from Core Data.")
         } catch {
-            debugPrint("Could dont remove: \(error.localizedDescription)")
+            debugPrint("Could DONT REMOVE from Core Data: \(error.localizedDescription)")
         }
     }
     
-    func fetch() {
+    func fetchCoreData() {
         guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
         let fetchRequest = NSFetchRequest<BTC>(entityName: "BTC")
         
         do {
             priceHistoryBtc = try managedContext.fetch(fetchRequest)
-            print("Successfuly FETCHED data.")
+            print("Successfuly FETCHED Core Data.")
         } catch {
-            debugPrint("Could not fetch: \(error.localizedDescription)")
+            debugPrint("Could NOT FETCH Core Data: \(error.localizedDescription)")
         }
     }
     
