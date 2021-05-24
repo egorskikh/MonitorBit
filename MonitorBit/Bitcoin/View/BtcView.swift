@@ -9,4 +9,6 @@ import UIKit
 
 class BtcView: UIView {
 
+    var hello = "Hello world"
+    
 }
