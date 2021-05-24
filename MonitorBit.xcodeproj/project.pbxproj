@@ -12,12 +12,12 @@
 		7B9090D2260CF625002EE383 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9090D1260CF625002EE383 /* AppDelegate.swift */; };
 		7B9090D4260CF625002EE383 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9090D3260CF625002EE383 /* SceneDelegate.swift */; };
 		7B9090D6260CF625002EE383 /* BtcVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9090D5260CF625002EE383 /* BtcVC.swift */; };
-		7B9090D9260CF625002EE383 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B9090D7260CF625002EE383 /* Main.storyboard */; };
 		7B9090DE260CF62B002EE383 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B9090DD260CF62B002EE383 /* Assets.xcassets */; };
 		7B9090E1260CF62B002EE383 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B9090DF260CF62B002EE383 /* LaunchScreen.storyboard */; };
 		7B9090F9260CF990002EE383 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9090F8260CF990002EE383 /* NetworkService.swift */; };
 		7B9090FE260CF9AF002EE383 /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9090FD260CF9AF002EE383 /* NetworkDataFetcher.swift */; };
 		7BD4118F261C7A5E00656B40 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7BD4118D261C7A5E00656B40 /* Model.xcdatamodeld */; };
+		7BEE604A265BD1C200A9A450 /* BtcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEE6049265BD1C200A9A450 /* BtcView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,13 +27,13 @@
 		7B9090D1260CF625002EE383 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B9090D3260CF625002EE383 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		7B9090D5260CF625002EE383 /* BtcVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BtcVC.swift; sourceTree = "<group>"; };
-		7B9090D8260CF625002EE383 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7B9090DD260CF62B002EE383 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7B9090E0260CF62B002EE383 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7B9090E2260CF62B002EE383 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B9090F8260CF990002EE383 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		7B9090FD260CF9AF002EE383 /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
 		7BD4118E261C7A5E00656B40 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		7BEE6049265BD1C200A9A450 /* BtcView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BtcView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +51,7 @@
 			isa = PBXGroup;
 			children = (
 				7B433D68260E7DDC00432003 /* BtcCell.swift */,
+				7BEE6049265BD1C200A9A450 /* BtcView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -140,17 +141,8 @@
 				7B6E7F09260D248400732537 /* Models */,
 				7B9090F7260CF952002EE383 /* Networking */,
 				7B9090F6260CF936002EE383 /* Controllers */,
-				7B9090F5260CF929002EE383 /* Storyboards */,
 			);
 			path = Bitcoin;
-			sourceTree = "<group>";
-		};
-		7B9090F5260CF929002EE383 /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				7B9090D7260CF625002EE383 /* Main.storyboard */,
-			);
-			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		7B9090F6260CF936002EE383 /* Controllers */ = {
@@ -229,7 +221,6 @@
 			files = (
 				7B9090E1260CF62B002EE383 /* LaunchScreen.storyboard in Resources */,
 				7B9090DE260CF62B002EE383 /* Assets.xcassets in Resources */,
-				7B9090D9260CF625002EE383 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,6 +237,7 @@
 				7BD4118F261C7A5E00656B40 /* Model.xcdatamodeld in Sources */,
 				7B9090D4260CF625002EE383 /* SceneDelegate.swift in Sources */,
 				7B9090FE260CF9AF002EE383 /* NetworkDataFetcher.swift in Sources */,
+				7BEE604A265BD1C200A9A450 /* BtcView.swift in Sources */,
 				7B6E7F0B260D24D000732537 /* BitcoinResponse.swift in Sources */,
 				7B9090F9260CF990002EE383 /* NetworkService.swift in Sources */,
 			);
@@ -254,14 +246,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		7B9090D7260CF625002EE383 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7B9090D8260CF625002EE383 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		7B9090DF260CF62B002EE383 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -404,7 +388,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ru.egorskikh.MonitorBit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -423,7 +407,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ru.egorskikh.MonitorBit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
