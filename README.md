@@ -19,7 +19,8 @@ Stack:
 
 ## Add later
 
+- [ ] Get rid of the storyboard entirely.
 - [ ] Show the current course when the button is pressed. The table will move down, and the current bitcoin rate will be visible.
 - [ ] Add background animation of flying currency emblems.
-- [ ] Add sorting by price > && <.
+- [ ] Add sorting by price (> && <).
 - [ ] Add a second view controller with the help of a tab bar on which there will be a graph of added prices.
