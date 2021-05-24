@@ -13,6 +13,10 @@ let appDelegate = UIApplication.shared.delegate as? AppDelegate
 class BtcVC: UIViewController {
     
     // MARK: - Property
+    let bv = BtcView()
+    let networkDataFetcher = NetworkDataFetcher()
+    var priceHistoryBtc: [BTC] = []
+    
     lazy var formattedDate: String = {
         let time = NSDate()
         let formatter = DateFormatter()
@@ -21,22 +25,17 @@ class BtcVC: UIViewController {
         return formattedDate
     }()
     
-    let networkDataFetcher = NetworkDataFetcher()
-    
-    var priceHistoryBtc: [BTC] = []
-    
-    // MARK: - IBOutlets
-    @IBOutlet weak var updLabel: UILabel!
-    @IBOutlet weak var eurLabel: UILabel!
-    @IBOutlet weak var rubLabel: UILabel!
-    
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var btcEqual: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
+    private lazy var saveToCoreDataButtonItem: UIBarButtonItem = {
+        return UIBarButtonItem(barButtonSystemItem: .add,
+                                   target: self,
+                                   action: #selector(saveInCoreDate))
+        }()
     
     // MARK: - View Life Cicle
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .gray
+        setupConstraint()
         fetchJSON()
         setupTableView()
     }
@@ -47,17 +46,17 @@ class BtcVC: UIViewController {
     }
     
     // MARK: - Action
-    @IBAction func add(_ sender: UIBarButtonItem) {
+    @objc private func saveInCoreDate(sender: UIBarButtonItem) {
         
-        if updLabel.text == "" { return }
+        if bv.updLbl.text == "" { return }
         
         guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
         let btc = BTC(context: managedContext)
         
-        btc.upd = updLabel.text
-        btc.eur = eurLabel.text
-        btc.rub = rubLabel.text
-        btc.date = dateLabel.text
+        btc.upd = bv.updLbl.text
+        btc.eur = bv.eurLbl.text
+        btc.rub = bv.rubLbl.text
+        btc.date = bv.dateLbl.text
         
         do {
             try managedContext.save()
@@ -66,7 +65,7 @@ class BtcVC: UIViewController {
             debugPrint("Could NOTE SAVE Core Data: \(error.localizedDescription)")
         }
         fetchCoreData()
-        self.tableView.reloadData()
+        bv.tableView.reloadData()
     }
     
 }
@@ -74,23 +73,54 @@ class BtcVC: UIViewController {
 // MARK: - Setup Method
 extension BtcVC {
     
+    func setupConstraint() {
+        view.addSubview(bv.stackView)
+        view.addSubview(bv.btcEqual)
+        view.addSubview(bv.dateLbl)
+        view.addSubview(bv.tableView)
+        
+        NSLayoutConstraint.activate([
+            bv.btcEqual.leadingAnchor.constraint(greaterThanOrEqualTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 36),
+            bv.btcEqual.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 49.0),
+            bv.btcEqual.widthAnchor.constraint(greaterThanOrEqualToConstant: 59.0),
+            bv.btcEqual.heightAnchor.constraint(greaterThanOrEqualToConstant: 20.5),
+            
+            bv.stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            bv.stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 18.0),
+            bv.stackView.leadingAnchor.constraint(equalTo: bv.btcEqual.trailingAnchor),
+            bv.stackView.widthAnchor.constraint(greaterThanOrEqualToConstant: 100.0),
+            
+            bv.dateLbl.widthAnchor.constraint(greaterThanOrEqualToConstant: 74.0),
+            bv.dateLbl.heightAnchor.constraint(greaterThanOrEqualToConstant: 21.0),
+            bv.dateLbl.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16.0),
+            bv.dateLbl.leadingAnchor.constraint(greaterThanOrEqualTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 230),
+            
+            bv.tableView.topAnchor.constraint(equalTo: bv.dateLbl.bottomAnchor),
+            bv.tableView.topAnchor.constraint(equalTo: bv.stackView.bottomAnchor, constant: 28.5),
+            bv.tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            bv.tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            bv.tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
+    }
+    
     private func setupTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.rowHeight = 91
+        bv.tableView.delegate = self
+        bv.tableView.dataSource = self
         title = "1 BTC"
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        navigationItem.rightBarButtonItems = [ saveToCoreDataButtonItem ]
     }
     
     private func fetchJSON() {
         
-        networkDataFetcher.fetchExchangeRate { (exchangeRate) in
+        networkDataFetcher.fetchExchangeRate { [self] (exchangeRate) in
             guard let exchangeRate = exchangeRate else { return }
-            self.eurLabel.text = String(exchangeRate.EUR.buy) + " " + String(exchangeRate.EUR.symbol)
-            self.updLabel.text = String(exchangeRate.USD.buy) + " " + String(exchangeRate.USD.symbol)
-            self.rubLabel.text = String(exchangeRate.RUB.buy) + " " + String(exchangeRate.RUB.symbol)
-            self.btcEqual.text = "1 BTC ="
-            self.dateLabel.text = self.formattedDate
+            bv.eurLbl.text = String(exchangeRate.EUR.buy) + " " + String(exchangeRate.EUR.symbol)
+            bv.updLbl.text = String(exchangeRate.USD.buy) + " " + String(exchangeRate.USD.symbol)
+            bv.rubLbl.text = String(exchangeRate.RUB.buy) + " " + String(exchangeRate.RUB.symbol)
+            bv.btcEqual.text = "1 BTC ="
+            bv.dateLbl.text = self.formattedDate
         }
     }
     
@@ -99,6 +129,9 @@ extension BtcVC {
 // MARK: - UITableViewDataSource, UITableViewDelegate
 extension BtcVC: UITableViewDataSource, UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 91
+    }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         "price history"
     }
