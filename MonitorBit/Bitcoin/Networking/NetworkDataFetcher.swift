@@ -28,6 +28,7 @@ final class NetworkDataFetcher {
         
         do {
             let objects = try decoder.decode(type.self, from: data)
+            print("Successfule FETCHED from JSON.")
             return objects
         } catch let jsonError {
             print("Failed to decode JSON: \(jsonError)", jsonError.localizedDescription)
