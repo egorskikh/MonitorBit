@@ -15,6 +15,8 @@ Stack:
 - UITableViewDataSource
 - UITableViewDelegate
 
+![ghBtc](https://user-images.githubusercontent.com/60622982/119444023-40054100-bd33-11eb-9a0a-4aa8d9b919bb.gif)
+
 ## Add later
 
 - [x] If there is no data, the results are not saved
