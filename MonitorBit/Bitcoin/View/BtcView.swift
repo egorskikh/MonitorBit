@@ -24,6 +24,7 @@ class BtcView: UIView {
         let label = UILabel()
         label.textAlignment = .center
         label.text = ""
+        label.textColor = .white
         return label
     }()
     
@@ -31,6 +32,7 @@ class BtcView: UIView {
         let label = UILabel()
         label.textAlignment = .center
         label.text = ""
+        label.textColor = .white
         return label
     }()
     
@@ -38,6 +40,7 @@ class BtcView: UIView {
         let label = UILabel()
         label.textAlignment = .center
         label.text = ""
+        label.textColor = .white
         return label
     }()
     
@@ -51,6 +54,7 @@ class BtcView: UIView {
         let label = UILabel()
         label.text = formattedDate
         label.textAlignment = .center
+        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         label.isHidden = true
         

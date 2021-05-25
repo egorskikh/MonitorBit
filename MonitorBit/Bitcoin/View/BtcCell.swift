@@ -26,21 +26,25 @@ class BtcCell: UITableViewCell {
     
     lazy var updLbl: UILabel = {
         let label = UILabel()
+        label.textColor = .white
         return label
     }()
     
     lazy var eurLbl: UILabel = {
         let label = UILabel()
+        label.textColor = .white
         return label
     }()
     
     lazy var rubLbl: UILabel = {
         let label = UILabel()
+        label.textColor = .white
         return label
     }()
     
     lazy var dateLbl: UILabel = {
         let label = UILabel()
+        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -48,6 +52,7 @@ class BtcCell: UITableViewCell {
     fileprivate var view: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .black
         return view
     }()
     
