@@ -136,11 +136,11 @@
 		7B9090F4260CF91B002EE383 /* Bitcoin */ = {
 			isa = PBXGroup;
 			children = (
-				7B42B09B2613566C008B1178 /* View */,
-				7B433D66260D6C9000432003 /* Core Data */,
 				7B6E7F09260D248400732537 /* Models */,
-				7B9090F7260CF952002EE383 /* Networking */,
+				7B42B09B2613566C008B1178 /* View */,
 				7B9090F6260CF936002EE383 /* Controllers */,
+				7B433D66260D6C9000432003 /* Core Data */,
+				7B9090F7260CF952002EE383 /* Networking */,
 			);
 			path = Bitcoin;
 			sourceTree = "<group>";

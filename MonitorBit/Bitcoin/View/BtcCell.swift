@@ -12,9 +12,9 @@ class BtcCell: UITableViewCell {
     static let reuseID = "Cell"
     
     lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [ updLbl,
-                                                        eurLbl,
-                                                        rubLbl] )
+        let stackView = UIStackView(arrangedSubviews: [updLbl,
+                                                       eurLbl,
+                                                       rubLbl])
         stackView.axis = .vertical
         stackView.distribution = .fill
         stackView.alignment = .fill
@@ -60,7 +60,7 @@ class BtcCell: UITableViewCell {
         super.init(coder: aDecoder)
     }
     
-    func setupConstraint() {
+    private func setupConstraint() {
         contentView.addSubview(view)
         view.addSubview(stackView)
         view.addSubview(dateLbl)
@@ -80,7 +80,7 @@ class BtcCell: UITableViewCell {
         ])
     }
     
-    func configuratinCell(_ btc: BTC) {
+    public func configuratinCell(_ btc: BTC) {
         self.updLbl.text = btc.upd
         self.eurLbl.text = btc.eur
         self.rubLbl.text = btc.rub

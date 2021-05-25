@@ -13,30 +13,30 @@ let appDelegate = UIApplication.shared.delegate as? AppDelegate
 class BtcVC: UIViewController {
     
     // MARK: - Property
-    let bv = BtcView()
-    let networkDataFetcher = NetworkDataFetcher()
-    var priceHistoryBtc: [BTC] = []
+    private let bv = BtcView()
+    private let networkDataFetcher = NetworkDataFetcher()
+    private var priceHistoryBtc: [BTC] = []
     
-    lazy var formattedDate: String = {
-        let time = NSDate()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/YY"
-        let formattedDate = formatter.string(from: time as Date)
-        return formattedDate
+    // MARK: - Bar Button Items
+    private lazy var saveToCoreDataButtonItem: UIBarButtonItem = {
+        let buttonItem = UIBarButtonItem(barButtonSystemItem: .add,
+                                         target: self,
+                                         action: #selector(saveInCoreDate))
+        return buttonItem
     }()
     
-    private lazy var saveToCoreDataButtonItem: UIBarButtonItem = {
-        return UIBarButtonItem(barButtonSystemItem: .add,
-                                   target: self,
-                                   action: #selector(saveInCoreDate))
-        }()
+    private lazy var fetchJSONButtonItem: UIBarButtonItem = {
+        let buttonItem = UIBarButtonItem(barButtonSystemItem: .search,
+                                         target: self,
+                                         action: #selector(fetchJSONTapped))
+        return buttonItem
+    }()
     
     // MARK: - View Life Cicle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .gray
+        setupNavigationController()
         setupConstraint()
-        fetchJSON()
         setupTableView()
     }
     
@@ -46,49 +46,35 @@ class BtcVC: UIViewController {
     }
     
     // MARK: - Action
+    @objc private func fetchJSONTapped(sender: UIBarButtonItem) {
+        fetchJSON()
+    }
+    
     @objc private func saveInCoreDate(sender: UIBarButtonItem) {
         
         if bv.updLbl.text == "" { return }
         
-        guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
-        let btc = BTC(context: managedContext)
-        
-        btc.upd = bv.updLbl.text
-        btc.eur = bv.eurLbl.text
-        btc.rub = bv.rubLbl.text
-        btc.date = bv.dateLbl.text
-        
-        do {
-            try managedContext.save()
-            print("Successfuly SAVED Core Data")
-        } catch {
-            debugPrint("Could NOTE SAVE Core Data: \(error.localizedDescription)")
-        }
+        saveCoreDate()
         fetchCoreData()
         bv.tableView.reloadData()
     }
     
 }
 
-// MARK: - Setup Method
+
 extension BtcVC {
     
-    func setupConstraint() {
+    // MARK: - Setup Constraint
+    private func setupConstraint() {
         view.addSubview(bv.stackView)
-        view.addSubview(bv.btcEqual)
         view.addSubview(bv.dateLbl)
         view.addSubview(bv.tableView)
         
-        NSLayoutConstraint.activate([
-            bv.btcEqual.leadingAnchor.constraint(greaterThanOrEqualTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 36),
-            bv.btcEqual.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 49.0),
-            bv.btcEqual.widthAnchor.constraint(greaterThanOrEqualToConstant: 59.0),
-            bv.btcEqual.heightAnchor.constraint(greaterThanOrEqualToConstant: 20.5),
-            
+        NSLayoutConstraint.activate([      
             bv.stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             bv.stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 18.0),
-            bv.stackView.leadingAnchor.constraint(equalTo: bv.btcEqual.trailingAnchor),
-            bv.stackView.widthAnchor.constraint(greaterThanOrEqualToConstant: 100.0),
+            bv.stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            bv.stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
             bv.dateLbl.widthAnchor.constraint(greaterThanOrEqualToConstant: 74.0),
             bv.dateLbl.heightAnchor.constraint(greaterThanOrEqualToConstant: 21.0),
@@ -103,15 +89,22 @@ extension BtcVC {
         ])
     }
     
+    // MARK: Delegates TableView
     private func setupTableView() {
         bv.tableView.delegate = self
         bv.tableView.dataSource = self
-        title = "1 BTC"
-        navigationController?.navigationBar.prefersLargeTitles = true
-        
-        navigationItem.rightBarButtonItems = [ saveToCoreDataButtonItem ]
     }
     
+    // MARK: Setup NavigationController
+    private func setupNavigationController() {
+        title = "BTC"
+        view.backgroundColor = .lightGray
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.rightBarButtonItems = [ saveToCoreDataButtonItem,
+                                               fetchJSONButtonItem]
+    }
+    
+    // MARK: - Setup UI via JSON
     private func fetchJSON() {
         
         networkDataFetcher.fetchExchangeRate { [self] (exchangeRate) in
@@ -119,8 +112,13 @@ extension BtcVC {
             bv.eurLbl.text = String(exchangeRate.EUR.buy) + " " + String(exchangeRate.EUR.symbol)
             bv.updLbl.text = String(exchangeRate.USD.buy) + " " + String(exchangeRate.USD.symbol)
             bv.rubLbl.text = String(exchangeRate.RUB.buy) + " " + String(exchangeRate.RUB.symbol)
-            bv.btcEqual.text = "1 BTC ="
-            bv.dateLbl.text = self.formattedDate
+            
+            // O(1)
+            if bv.updLbl.text?.last == "$" {
+                title = "1 BTC ="
+                bv.dateLbl.isHidden = false
+            }
+            
         }
     }
     
@@ -133,7 +131,7 @@ extension BtcVC: UITableViewDataSource, UITableViewDelegate {
         return 91
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        "price history"
+        return "price history"
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -164,17 +162,34 @@ extension BtcVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
-        removeBTC(atIndexPath: indexPath)
+        removeCoreData(atIndexPath: indexPath)
         fetchCoreData()
         tableView.deleteRows(at: [indexPath], with: .automatic)
     }
     
 }
 
-// MARK: - Core Data Fetch
+// MARK: - Core Data
 extension BtcVC {
     
-    func removeBTC(atIndexPath indexPath: IndexPath) {
+    private func saveCoreDate() {
+        guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
+        let btc = BTC(context: managedContext)
+        
+        btc.upd = bv.updLbl.text
+        btc.eur = bv.eurLbl.text
+        btc.rub = bv.rubLbl.text
+        btc.date = bv.dateLbl.text
+        
+        do {
+            try managedContext.save()
+            print("Successfuly SAVED Core Data")
+        } catch {
+            debugPrint("Could NOTE SAVE Core Data: \(error.localizedDescription)")
+        }
+    }
+    
+    private func removeCoreData(atIndexPath indexPath: IndexPath) {
         guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
         
         managedContext.delete(priceHistoryBtc[indexPath.row])
@@ -187,7 +202,7 @@ extension BtcVC {
         }
     }
     
-    func fetchCoreData() {
+    private func fetchCoreData() {
         guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
         let fetchRequest = NSFetchRequest<BTC>(entityName: "BTC")
         
@@ -200,3 +215,4 @@ extension BtcVC {
     }
     
 }
+
