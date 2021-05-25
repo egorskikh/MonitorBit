@@ -15,8 +15,6 @@ Stack:
 - UITableViewDataSource
 - UITableViewDelegate
 
-![btc](https://user-images.githubusercontent.com/60622982/114958036-df98ff00-9e6a-11eb-89f4-caa122fc3bc8.gif)
-
 ## Add later
 
 - [x] If there is no data, the results are not saved
