@@ -98,7 +98,7 @@ extension BtcVC {
     // MARK: Setup NavigationController
     private func setupNavigationController() {
         title = "BTC"
-        view.backgroundColor = .lightGray
+        view.backgroundColor = .darkGray
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItems = [ saveToCoreDataButtonItem,
                                                fetchJSONButtonItem]
@@ -108,10 +108,15 @@ extension BtcVC {
     private func fetchJSON() {
         
         networkDataFetcher.fetchExchangeRate { [self] (exchangeRate) in
+            
             guard let exchangeRate = exchangeRate else { return }
-            bv.eurLbl.text = String(exchangeRate.EUR.buy) + " " + String(exchangeRate.EUR.symbol)
-            bv.updLbl.text = String(exchangeRate.USD.buy) + " " + String(exchangeRate.USD.symbol)
-            bv.rubLbl.text = String(exchangeRate.RUB.buy) + " " + String(exchangeRate.RUB.symbol)
+            
+            bv.eurLbl.attributedText = NSMutableAttributedString()
+                .bold(String(exchangeRate.EUR.buy) + " " + String(exchangeRate.EUR.symbol))
+            bv.updLbl.attributedText = NSMutableAttributedString()
+                .bold(String(exchangeRate.USD.buy) + " " + String(exchangeRate.USD.symbol))
+            bv.rubLbl.attributedText = NSMutableAttributedString()
+                .bold(String(exchangeRate.RUB.buy) + " " + String(exchangeRate.RUB.symbol))
             
             // O(1)
             if bv.updLbl.text?.last == "$" {

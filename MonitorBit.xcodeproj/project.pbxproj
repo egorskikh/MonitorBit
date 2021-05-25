@@ -18,6 +18,7 @@
 		7B9090FE260CF9AF002EE383 /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9090FD260CF9AF002EE383 /* NetworkDataFetcher.swift */; };
 		7BD4118F261C7A5E00656B40 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7BD4118D261C7A5E00656B40 /* Model.xcdatamodeld */; };
 		7BEE604A265BD1C200A9A450 /* BtcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEE6049265BD1C200A9A450 /* BtcView.swift */; };
+		7BEE6056265CB99500A9A450 /* NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEE6055265CB99500A9A450 /* NSMutableAttributedString.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		7B9090FD260CF9AF002EE383 /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
 		7BD4118E261C7A5E00656B40 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		7BEE6049265BD1C200A9A450 /* BtcView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BtcView.swift; sourceTree = "<group>"; };
+		7BEE6055265CB99500A9A450 /* NSMutableAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedString.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 		7B9090EF260CF7DE002EE383 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				7BEE6054265CB96D00A9A450 /* Extension */,
 				7B9090EA260CF733002EE383 /* Supporting Files */,
 				7B9090EB260CF748002EE383 /* App Delegates */,
 				7B9090EC260CF767002EE383 /* Storyboards */,
@@ -160,6 +163,22 @@
 				7B9090FD260CF9AF002EE383 /* NetworkDataFetcher.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		7BEE6053265CB8A000A9A450 /* NSMutableAttributedStringEx */ = {
+			isa = PBXGroup;
+			children = (
+				7BEE6055265CB99500A9A450 /* NSMutableAttributedString.swift */,
+			);
+			path = NSMutableAttributedStringEx;
+			sourceTree = "<group>";
+		};
+		7BEE6054265CB96D00A9A450 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				7BEE6053265CB8A000A9A450 /* NSMutableAttributedStringEx */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,6 +258,7 @@
 				7B9090FE260CF9AF002EE383 /* NetworkDataFetcher.swift in Sources */,
 				7BEE604A265BD1C200A9A450 /* BtcView.swift in Sources */,
 				7B6E7F0B260D24D000732537 /* BitcoinResponse.swift in Sources */,
+				7BEE6056265CB99500A9A450 /* NSMutableAttributedString.swift in Sources */,
 				7B9090F9260CF990002EE383 /* NetworkService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

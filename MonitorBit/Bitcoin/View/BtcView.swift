@@ -52,7 +52,8 @@ class BtcView: UIView {
         let formattedDate = formatter.string(from: time as Date)
         
         let label = UILabel()
-        label.text = formattedDate
+        label.attributedText = NSMutableAttributedString()
+            .bold(formattedDate)
         label.textAlignment = .center
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
