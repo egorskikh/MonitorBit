@@ -117,12 +117,12 @@
 			path = "App Delegates";
 			sourceTree = "<group>";
 		};
-		7B9090EC260CF767002EE383 /* Storyboards */ = {
+		7B9090EC260CF767002EE383 /* LaunchScreen */ = {
 			isa = PBXGroup;
 			children = (
 				7B9090DF260CF62B002EE383 /* LaunchScreen.storyboard */,
 			);
-			path = Storyboards;
+			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
 		7B9090EF260CF7DE002EE383 /* App */ = {
@@ -131,7 +131,7 @@
 				7BEE6054265CB96D00A9A450 /* Extension */,
 				7B9090EA260CF733002EE383 /* Supporting Files */,
 				7B9090EB260CF748002EE383 /* App Delegates */,
-				7B9090EC260CF767002EE383 /* Storyboards */,
+				7B9090EC260CF767002EE383 /* LaunchScreen */,
 			);
 			path = App;
 			sourceTree = "<group>";
