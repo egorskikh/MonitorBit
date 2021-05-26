@@ -144,6 +144,7 @@ extension BtcVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // MARK: TODO
         return priceHistoryBtc.count
     }
     
@@ -167,6 +168,7 @@ extension BtcVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
+        // MARK: TODO
         removeCoreData(atIndexPath: indexPath)
         fetchCoreData()
         tableView.deleteRows(at: [indexPath], with: .automatic)
@@ -174,9 +176,9 @@ extension BtcVC: UITableViewDataSource, UITableViewDelegate {
     
 }
 
+// MARK: TODO
 // MARK: - Core Data
 extension BtcVC {
-    
     private func saveCoreDate() {
         
         guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
