@@ -211,6 +211,7 @@ extension BtcVC {
     private func fetchCoreData() {
         
         guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
+        
         let fetchRequest = NSFetchRequest<BTC>(entityName: "BTC")
         
         do {
