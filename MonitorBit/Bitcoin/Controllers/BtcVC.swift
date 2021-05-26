@@ -178,6 +178,7 @@ extension BtcVC: UITableViewDataSource, UITableViewDelegate {
 extension BtcVC {
     
     private func saveCoreDate() {
+        
         guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
         let btc = BTC(context: managedContext)
         
@@ -190,13 +191,13 @@ extension BtcVC {
             try managedContext.save()
             print("Successfuly SAVED Core Data")
         } catch {
-            debugPrint("Could NOTE SAVE Core Data: \(error.localizedDescription)")
+            debugPrint("Could NOT SAVE Core Data: \(error.localizedDescription)")
         }
     }
     
     private func removeCoreData(atIndexPath indexPath: IndexPath) {
-        guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
         
+        guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
         managedContext.delete(priceHistoryBtc[indexPath.row])
         
         do {
@@ -208,6 +209,7 @@ extension BtcVC {
     }
     
     private func fetchCoreData() {
+        
         guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
         let fetchRequest = NSFetchRequest<BTC>(entityName: "BTC")
         
