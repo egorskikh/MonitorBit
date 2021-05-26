@@ -19,6 +19,11 @@
 		7BD4118F261C7A5E00656B40 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7BD4118D261C7A5E00656B40 /* Model.xcdatamodeld */; };
 		7BEE604A265BD1C200A9A450 /* BtcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEE6049265BD1C200A9A450 /* BtcView.swift */; };
 		7BEE6056265CB99500A9A450 /* NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEE6055265CB99500A9A450 /* NSMutableAttributedString.swift */; };
+		7BEE6058265E9F6100A9A450 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEE6057265E9F6100A9A450 /* CoreDataStack.swift */; };
+		7BEE605D265EA99400A9A450 /* History+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEE6059265EA99400A9A450 /* History+CoreDataClass.swift */; };
+		7BEE605E265EA99400A9A450 /* History+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEE605A265EA99400A9A450 /* History+CoreDataProperties.swift */; };
+		7BEE605F265EA99400A9A450 /* BTC+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEE605B265EA99400A9A450 /* BTC+CoreDataClass.swift */; };
+		7BEE6060265EA99400A9A450 /* BTC+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEE605C265EA99400A9A450 /* BTC+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +41,11 @@
 		7BD4118E261C7A5E00656B40 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		7BEE6049265BD1C200A9A450 /* BtcView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BtcView.swift; sourceTree = "<group>"; };
 		7BEE6055265CB99500A9A450 /* NSMutableAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedString.swift; sourceTree = "<group>"; };
+		7BEE6057265E9F6100A9A450 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		7BEE6059265EA99400A9A450 /* History+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "History+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7BEE605A265EA99400A9A450 /* History+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "History+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7BEE605B265EA99400A9A450 /* BTC+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BTC+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7BEE605C265EA99400A9A450 /* BTC+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BTC+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +71,12 @@
 		7B433D66260D6C9000432003 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				7BEE6059265EA99400A9A450 /* History+CoreDataClass.swift */,
+				7BEE605A265EA99400A9A450 /* History+CoreDataProperties.swift */,
+				7BEE605B265EA99400A9A450 /* BTC+CoreDataClass.swift */,
+				7BEE605C265EA99400A9A450 /* BTC+CoreDataProperties.swift */,
 				7BD4118D261C7A5E00656B40 /* Model.xcdatamodeld */,
+				7BEE6057265E9F6100A9A450 /* CoreDataStack.swift */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -254,10 +269,15 @@
 				7B433D69260E7DDC00432003 /* BtcCell.swift in Sources */,
 				7B9090D2260CF625002EE383 /* AppDelegate.swift in Sources */,
 				7BD4118F261C7A5E00656B40 /* Model.xcdatamodeld in Sources */,
+				7BEE605D265EA99400A9A450 /* History+CoreDataClass.swift in Sources */,
 				7B9090D4260CF625002EE383 /* SceneDelegate.swift in Sources */,
 				7B9090FE260CF9AF002EE383 /* NetworkDataFetcher.swift in Sources */,
+				7BEE6058265E9F6100A9A450 /* CoreDataStack.swift in Sources */,
 				7BEE604A265BD1C200A9A450 /* BtcView.swift in Sources */,
+				7BEE6060265EA99400A9A450 /* BTC+CoreDataProperties.swift in Sources */,
 				7B6E7F0B260D24D000732537 /* BitcoinResponse.swift in Sources */,
+				7BEE605E265EA99400A9A450 /* History+CoreDataProperties.swift in Sources */,
+				7BEE605F265EA99400A9A450 /* BTC+CoreDataClass.swift in Sources */,
 				7BEE6056265CB99500A9A450 /* NSMutableAttributedString.swift in Sources */,
 				7B9090F9260CF990002EE383 /* NetworkService.swift in Sources */,
 			);

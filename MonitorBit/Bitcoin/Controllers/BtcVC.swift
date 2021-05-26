@@ -15,13 +15,14 @@ class BtcVC: UIViewController {
     // MARK: - Property
     private let bv = BtcView()
     private let networkDataFetcher = NetworkDataFetcher()
-    private var priceHistoryBtc: [BTC] = []
+    lazy var coreDataStack = CoreDataStack(modelName: "Model")
+    private var currentBtc: BTC?
     
     // MARK: - Bar Button Items
     private lazy var saveToCoreDataButtonItem: UIBarButtonItem = {
         let buttonItem = UIBarButtonItem(barButtonSystemItem: .add,
                                          target: self,
-                                         action: #selector(saveInCoreDate))
+                                         action: #selector(saveCoreDate))
         return buttonItem
     }()
     
@@ -42,7 +43,7 @@ class BtcVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchCoreData()
+        findOrCreate()
     }
     
     // MARK: - Action
@@ -50,12 +51,19 @@ class BtcVC: UIViewController {
         fetchJSON()
     }
     
-    @objc private func saveInCoreDate(sender: UIBarButtonItem) {
+    @objc private func saveCoreDate() {
         
         if bv.updLbl.text == "" { return }
         
-        saveCoreDate()
-        fetchCoreData()
+        let history = History(context: coreDataStack.managedContext)
+        history.date = bv.dateLbl.text
+        history.upd = bv.updLbl.text
+        history.eur = bv.eurLbl.text
+        history.rub = bv.rubLbl.text
+        
+        currentBtc?.addToHistory(history)
+        coreDataStack.saveContext()
+        
         bv.tableView.reloadData()
     }
     
@@ -144,17 +152,18 @@ extension BtcVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // MARK: TODO
-        return priceHistoryBtc.count
+        return currentBtc?.history?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         guard
-            let cell = tableView.dequeueReusableCell(withIdentifier: BtcCell.reuseID, for: indexPath) as? BtcCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: BtcCell.reuseID, for: indexPath) as? BtcCell,
+            let btcHistory = currentBtc?.history?[indexPath.row] as? History
         else {
             return UITableViewCell()
         }
-        cell.configuratinCell(priceHistoryBtc[indexPath.row])
+        cell.configuratinCell(btcHistory)
         return cell
     }
     
@@ -168,60 +177,46 @@ extension BtcVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
-        // MARK: TODO
-        removeCoreData(atIndexPath: indexPath)
-        fetchCoreData()
-        tableView.deleteRows(at: [indexPath], with: .automatic)
+        guard
+            let historyToRemove = currentBtc?.history?[indexPath.row] as? History
+        else {
+            return
+        }
+        coreDataStack.managedContext.delete(historyToRemove)
+        coreDataStack.saveContext()
+        bv.tableView.deleteRows(at: [indexPath], with: .automatic)
     }
     
 }
 
-// MARK: TODO
-// MARK: - Core Data
+
+// MARK: -  Core Data Stack
 extension BtcVC {
-    private func saveCoreDate() {
-        
-        guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
-        let btc = BTC(context: managedContext)
-        
-        btc.upd = bv.updLbl.text
-        btc.eur = bv.eurLbl.text
-        btc.rub = bv.rubLbl.text
-        btc.date = bv.dateLbl.text
-        
-        do {
-            try managedContext.save()
-            print("Successfuly SAVED Core Data")
-        } catch {
-            debugPrint("Could NOT SAVE Core Data: \(error.localizedDescription)")
-        }
-    }
     
-    private func removeCoreData(atIndexPath indexPath: IndexPath) {
+    private func findOrCreate() {
         
-        guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
-        managedContext.delete(priceHistoryBtc[indexPath.row])
+        let user = "user"
         
+        let btcFetch: NSFetchRequest<BTC> = BTC.fetchRequest()
+        
+        btcFetch.predicate = NSPredicate(format: "%K == %@",
+                                         #keyPath(BTC.user),
+                                         user)
+        // pattern "Find or Create"
         do {
-            try managedContext.save()
-            print("Successfule REMOVED from Core Data.")
-        } catch {
-            debugPrint("Could DONT REMOVE from Core Data: \(error.localizedDescription)")
-        }
-    }
-    
-    private func fetchCoreData() {
+            let results = try coreDataStack.managedContext.fetch(btcFetch)
+            
+            if results.isEmpty {
+                currentBtc = BTC(context: coreDataStack.managedContext)
+                currentBtc?.user = user
+                coreDataStack.saveContext()
+            } else {
+                currentBtc = results.first
+            }
+        } catch let error as NSError {
+            print("Fetch CORE DATA error: \(error), \(error.userInfo)")
+          }
         
-        guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
-        
-        let fetchRequest = NSFetchRequest<BTC>(entityName: "BTC")
-        
-        do {
-            priceHistoryBtc = try managedContext.fetch(fetchRequest)
-            print("Successfuly FETCHED Core Data.")
-        } catch {
-            debugPrint("Could NOT FETCH Core Data: \(error.localizedDescription)")
-        }
     }
     
 }
