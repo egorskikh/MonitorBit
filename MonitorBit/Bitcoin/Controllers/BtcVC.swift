@@ -51,11 +51,11 @@ class BtcVC: UIViewController {
     
     @objc private func saveCoreDate() {
         
-        if bv.updLbl.text == "" { return }
+        if bv.usdLbl.text == "" { return }
         
         let history = History(context: coreDataStack.managedContext)
         history.date = bv.dateLbl.text
-        history.upd = bv.updLbl.text
+        history.upd = bv.usdLbl.text
         history.eur = bv.eurLbl.text
         history.rub = bv.rubLbl.text
         
@@ -116,16 +116,10 @@ extension BtcVC {
         networkDataFetcher.fetchExchangeRate { [self] (exchangeRate) in
             
             guard let exchangeRate = exchangeRate else { return }
-            
-            bv.eurLbl.attributedText = NSMutableAttributedString()
-                .bold(String(exchangeRate.EUR.buy) + " " + String(exchangeRate.EUR.symbol))
-            bv.updLbl.attributedText = NSMutableAttributedString()
-                .bold(String(exchangeRate.USD.buy) + " " + String(exchangeRate.USD.symbol))
-            bv.rubLbl.attributedText = NSMutableAttributedString()
-                .bold(String(exchangeRate.RUB.buy) + " " + String(exchangeRate.RUB.symbol))
+            bv.fillLabel(exchangeRate)
             
             // O(1)
-            if bv.updLbl.text?.last == "$" {
+            if bv.usdLbl.text?.last == "$" {
                 title = "1 BTC ="
                 bv.dateLbl.isHidden = false
             }

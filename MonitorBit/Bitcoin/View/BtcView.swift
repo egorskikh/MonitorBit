@@ -10,7 +10,7 @@ import UIKit
 class BtcView: UIView {
     
     lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [ updLbl,
+        let stackView = UIStackView(arrangedSubviews: [ usdLbl,
                                                         eurLbl,
                                                         rubLbl] )
         stackView.axis = .vertical
@@ -20,7 +20,7 @@ class BtcView: UIView {
         return stackView
     }()
     
-    lazy var updLbl: UILabel = {
+    lazy var usdLbl: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.text = ""
@@ -68,4 +68,11 @@ class BtcView: UIView {
         tableView.register(BtcCell.self, forCellReuseIdentifier: BtcCell.reuseID)
         return tableView
     }()
+    
+    public func fillLabel(_ input: BitcoinResponse) {
+        usdLbl.text = String(input.USD.buy) + " " + String(input.USD.symbol)
+        eurLbl.text = String(input.EUR.buy) + " " + String(input.EUR.symbol)
+        rubLbl.text = String(input.RUB.buy) + " " + String(input.RUB.symbol)
+    }
+    
 }

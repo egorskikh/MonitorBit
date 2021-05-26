@@ -12,7 +12,7 @@ class BtcCell: UITableViewCell {
     static let reuseID = "Cell"
     
     lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [updLbl,
+        let stackView = UIStackView(arrangedSubviews: [usdLbl,
                                                        eurLbl,
                                                        rubLbl])
         stackView.axis = .vertical
@@ -24,7 +24,7 @@ class BtcCell: UITableViewCell {
         return stackView
     }()
     
-    lazy var updLbl: UILabel = {
+    lazy var usdLbl: UILabel = {
         let label = UILabel()
         label.textColor = .white
         return label
@@ -86,7 +86,7 @@ class BtcCell: UITableViewCell {
     }
     
     public func configuratinCell(_ hisory: History) {
-        self.updLbl.text = hisory.upd
+        self.usdLbl.text = hisory.upd
         self.eurLbl.text = hisory.eur
         self.rubLbl.text = hisory.rub
         self.dateLbl.text = hisory.date
