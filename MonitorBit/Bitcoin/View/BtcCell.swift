@@ -85,11 +85,11 @@ class BtcCell: UITableViewCell {
         ])
     }
     
-    public func configuratinCell(_ btc: BTC) {
-        self.updLbl.text = btc.upd
-        self.eurLbl.text = btc.eur
-        self.rubLbl.text = btc.rub
-        self.dateLbl.text = btc.date
+    public func configuratinCell(_ hisory: History) {
+        self.updLbl.text = hisory.upd
+        self.eurLbl.text = hisory.eur
+        self.rubLbl.text = hisory.rub
+        self.dateLbl.text = hisory.date
     }
     
 }
