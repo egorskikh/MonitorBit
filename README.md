@@ -22,7 +22,7 @@ Stack:
 - [x] If there is no data, the results are not saved
 - [x] Get rid of the storyboard entirely.
 - [x] Design UI beautifully.
-- [ ] Fix code duplication in Core Data usage with Core Data Stack
+- [x] Fix code duplication in Core Data usage with Core Data Stack
 - [ ] Transition to MVVM architecture. The project turns into a massive-view-controller.
 - [ ] Start covering with tests
 - [ ] Show the current exchange rate when the button is pressed. The table will move down, and the current bitcoin rate will be visible.
