@@ -1,8 +1,6 @@
-# MonitorBit
+Б# MonitorBit
 
-The application allows you to find out the price of bitcoin at the moment and saves the result to the Core Data.
-
-Task: to understand in practice the basics of the Core Date, Sort, Core Animation
+I am very happy with this project. I plan to develop it in the long term. I am constantly finding things that can be improved, and this makes me develop.
 
 Stack:
 - MVC
