@@ -1,4 +1,4 @@
-Б# MonitorBit
+# MonitorBit
 
 I am very happy with this project. I plan to develop it in the long term. I am constantly finding things that can be improved, and this makes me develop.
 
