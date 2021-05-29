@@ -2,12 +2,14 @@
 //  BtcView.swift
 //  MonitorBit
 //
-//  Created by Egor Gorskikh on 24.05.2021.
+//  Created by Egor Gorskikh on 29.05.2021.
 //
 
 import UIKit
 
 class BtcView: UIView {
+    
+    // MARK: - UI
     
     lazy var stackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [ usdLbl,
@@ -52,8 +54,7 @@ class BtcView: UIView {
         let formattedDate = formatter.string(from: time as Date)
         
         let label = UILabel()
-        label.attributedText = NSMutableAttributedString()
-            .bold(formattedDate)
+        label.attributedText = NSMutableAttributedString().bold(formattedDate)
         label.textAlignment = .center
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -65,14 +66,19 @@ class BtcView: UIView {
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(BtcCell.self, forCellReuseIdentifier: BtcCell.reuseID)
+        tableView.register(BtcViewCell.self, forCellReuseIdentifier: BtcViewCell.reuseID)
         return tableView
     }()
     
-    public func fillLabel(_ input: BitcoinResponse) {
-        usdLbl.text = String(input.USD.buy) + " " + String(input.USD.symbol)
-        eurLbl.text = String(input.EUR.buy) + " " + String(input.EUR.symbol)
-        rubLbl.text = String(input.RUB.buy) + " " + String(input.RUB.symbol)
+    // MARK: - public method
+    
+    public func fillCellWithText(_ input: BitcoinResponse) {
+        usdLbl.attributedText = NSMutableAttributedString()
+            .bold(String(input.USD.buy) + " " + String(input.USD.symbol))
+        eurLbl.attributedText = NSMutableAttributedString()
+            .bold(String(input.EUR.buy) + " " + String(input.EUR.symbol))
+        rubLbl.attributedText = NSMutableAttributedString()
+            .bold(String(input.RUB.buy) + " " + String(input.RUB.symbol))
     }
     
 }

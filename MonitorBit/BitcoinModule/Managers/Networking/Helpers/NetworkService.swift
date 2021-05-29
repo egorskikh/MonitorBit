@@ -9,7 +9,7 @@ import Foundation
 
 final class NetworkService {
     
-    func request(completion: @escaping (Data?, Error?) -> Void) {
+    public func request(completion: @escaping (Data?, Error?) -> Void) {
         let url = self.url()
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "get"

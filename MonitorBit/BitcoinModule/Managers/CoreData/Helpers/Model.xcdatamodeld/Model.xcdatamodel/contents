@@ -8,11 +8,11 @@
         <attribute name="date" optional="YES" attributeType="String"/>
         <attribute name="eur" optional="YES" attributeType="String"/>
         <attribute name="rub" optional="YES" attributeType="String"/>
-        <attribute name="upd" optional="YES" attributeType="String"/>
+        <attribute name="usd" optional="YES" attributeType="String"/>
         <relationship name="btc" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BTC" inverseName="history" inverseEntity="BTC"/>
     </entity>
     <elements>
-        <element name="History" positionX="252.6449584960938" positionY="-16.91000366210938" width="128" height="118"/>
         <element name="BTC" positionX="-100.71435546875" positionY="-15.31793212890625" width="128" height="73"/>
+        <element name="History" positionX="252.6449584960938" positionY="-16.91000366210938" width="128" height="104"/>
     </elements>
 </model>

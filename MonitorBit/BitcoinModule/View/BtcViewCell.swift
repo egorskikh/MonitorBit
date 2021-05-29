@@ -7,9 +7,11 @@
 
 import UIKit
 
-class BtcCell: UITableViewCell {
+class BtcViewCell: UITableViewCell {
     
     static let reuseID = "Cell"
+    
+    // MARK: - UI elements
     
     lazy var stackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [usdLbl,
@@ -56,6 +58,8 @@ class BtcCell: UITableViewCell {
         return view
     }()
     
+    // MARK: - Life Cycle
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupConstraint()
@@ -64,6 +68,8 @@ class BtcCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    
+    // MARK: - Setting Constraint
     
     private func setupConstraint() {
         contentView.addSubview(view)
@@ -85,11 +91,13 @@ class BtcCell: UITableViewCell {
         ])
     }
     
-    public func configuratinCell(_ hisory: History) {
-        self.usdLbl.text = hisory.upd
+    // MARK: - public method
+    
+    public func fillCellWithText(_ hisory: History) {
+        self.usdLbl.text = hisory.usd
         self.eurLbl.text = hisory.eur
         self.rubLbl.text = hisory.rub
         self.dateLbl.text = hisory.date
     }
-    
+   
 }
