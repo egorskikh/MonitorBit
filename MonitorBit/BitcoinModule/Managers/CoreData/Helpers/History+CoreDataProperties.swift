@@ -19,7 +19,7 @@ extension History {
     @NSManaged public var date: String?
     @NSManaged public var eur: String?
     @NSManaged public var rub: String?
-    @NSManaged public var upd: String?
+    @NSManaged public var usd: String?
     @NSManaged public var btc: BTC?
 
 }
