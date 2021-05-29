@@ -3,7 +3,7 @@
 I am very happy with this project. I plan to develop it in the long term. I am constantly finding things that can be improved, and this makes me develop.
 
 Stack:
-- MVC
+- ~~MVC~~ MVVM
 - API
 - Parsing JSON
 - Core Data
@@ -21,7 +21,7 @@ Stack:
 - [x] Get rid of the storyboard entirely.
 - [x] Design UI beautifully.
 - [x] Fix code duplication in Core Data usage with Core Data Stack
-- [ ] Transition to MVVM architecture. The project turns into a massive-view-controller.
+- [x] Transition to MVVM architecture. The project turns into a massive-view-controller.
 - [ ] Start covering with tests
 - [ ] Show the current exchange rate when the button is pressed. The table will move down, and the current bitcoin rate will be visible.
 - [ ] Add background animation of flying currency emblems.
