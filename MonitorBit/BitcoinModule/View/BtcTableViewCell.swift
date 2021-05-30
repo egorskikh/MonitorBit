@@ -7,9 +7,9 @@
 
 import UIKit
 
-class BtcViewCell: UITableViewCell {
+class BtcTableViewCell: UITableViewCell {
     
-    static let reuseID = "Cell"
+    static let reuseID = "TableViewCell"
     
     // MARK: - UI elements
     
@@ -91,7 +91,7 @@ class BtcViewCell: UITableViewCell {
         ])
     }
     
-    // MARK: - public method
+    // MARK: - Public method
     
     public func fillCellWithText(_ hisory: History) {
         self.usdLbl.text = hisory.usd

@@ -136,8 +136,8 @@ extension BtcVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard
-            let cell = tableView.dequeueReusableCell(withIdentifier: BtcViewCell.reuseID,
-                                                     for: indexPath) as? BtcViewCell,
+            let cell = tableView.dequeueReusableCell(withIdentifier: BtcTableViewCell.reuseID,
+                                                     for: indexPath) as? BtcTableViewCell,
             let btcHistory = viewModel.currentBtc?.history?[indexPath.row] as? History
         else {
             return UITableViewCell()

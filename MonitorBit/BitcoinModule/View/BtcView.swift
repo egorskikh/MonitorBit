@@ -66,11 +66,11 @@ class BtcView: UIView {
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(BtcViewCell.self, forCellReuseIdentifier: BtcViewCell.reuseID)
+        tableView.register(BtcTableViewCell.self, forCellReuseIdentifier: BtcTableViewCell.reuseID)
         return tableView
     }()
     
-    // MARK: - public method
+    // MARK: - Public method
     
     public func fillCellWithText(_ input: BitcoinResponse) {
         usdLbl.attributedText = NSMutableAttributedString()
