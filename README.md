@@ -20,6 +20,7 @@ Stack:
 - [x] Design UI beautifully.
 - [x] Fix code duplication in Core Data usage with Core Data Stack
 - [x] Transition to MVVM architecture. The project turns into a massive-view-controller.
+- [ ] Change the stack where the data comes to the CollectionView
 - [ ] Start covering with tests
 - [ ] Show the current exchange rate when the button is pressed. The table will move down, and the current bitcoin rate will be visible.
 - [ ] Add background animation of flying currency emblems.
