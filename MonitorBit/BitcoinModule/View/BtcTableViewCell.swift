@@ -11,7 +11,7 @@ class BtcTableViewCell: UITableViewCell {
     
     static let reuseID = "TableViewCell"
     
-    // MARK: - UI elements
+    // MARK: - UI Elements
     
     lazy var stackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [usdLbl,

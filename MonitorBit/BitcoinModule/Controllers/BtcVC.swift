@@ -11,7 +11,6 @@ import CoreData
 class BtcVC: UIViewController {
     
     // MARK: - Property
-    
     private let btcView = BtcView()
     private var viewModel = BtcVM()
     
@@ -72,6 +71,8 @@ class BtcVC: UIViewController {
 }
 
 
+// MARK: - Private method
+
 extension BtcVC {
     
     private func setDelegates() {
@@ -116,6 +117,7 @@ extension BtcVC {
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
+
 extension BtcVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -133,7 +135,8 @@ extension BtcVC: UITableViewDataSource, UITableViewDelegate {
         return viewModel.numberOfRows()
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard
             let cell = tableView.dequeueReusableCell(withIdentifier: BtcTableViewCell.reuseID,
@@ -150,11 +153,13 @@ extension BtcVC: UITableViewDataSource, UITableViewDelegate {
         return true
     }
     
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+    func tableView(_ tableView: UITableView,
+                   editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView,
+                   commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard
             let historyToRemove = viewModel.currentBtc?.history?[indexPath.row] as? History
         else {

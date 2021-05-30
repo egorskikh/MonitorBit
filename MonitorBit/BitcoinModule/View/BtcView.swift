@@ -9,7 +9,7 @@ import UIKit
 
 class BtcView: UIView {
     
-    // MARK: - UI
+    // MARK: - UI Elements
     
     lazy var stackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [ usdLbl,
