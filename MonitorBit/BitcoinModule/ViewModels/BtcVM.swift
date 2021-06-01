@@ -19,7 +19,6 @@ class BtcVM: BtcViewModelType {
                         rub: UILabel,
                         date: UILabel) {
         let history = History(context: coreDataManager.managedContext)
-        
         history.date = date.text
         history.usd = usd.text
         history.eur = eur.text

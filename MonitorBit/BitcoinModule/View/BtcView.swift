@@ -12,16 +12,18 @@ class BtcView: UIView {
     // MARK: - UI Elements
     
     lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [ usdLbl,
-                                                        eurLbl,
-                                                        rubLbl] )
+        let stackView = UIStackView(arrangedSubviews: [ dateLbl,
+                                                        collectionView,
+                                                        tableView
+                                                        ])
         stackView.axis = .vertical
         stackView.distribution = .fill
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.spacing = 3
+        stackView.spacing = 0
         return stackView
     }()
     
+    // ---
     lazy var usdLbl: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -45,6 +47,7 @@ class BtcView: UIView {
         label.textColor = .white
         return label
     }()
+    // ---
     
     lazy var dateLbl: UILabel = {
         
@@ -58,7 +61,6 @@ class BtcView: UIView {
         label.textAlignment = .center
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.isHidden = true
         
         return label
     }()
@@ -71,8 +73,6 @@ class BtcView: UIView {
         return tableView
     }()
     
-    // MARK: - New disang
-    
     lazy var collectionView: UICollectionView = {
         
         let layot = UICollectionViewFlowLayout()
@@ -82,8 +82,27 @@ class BtcView: UIView {
                                 forCellWithReuseIdentifier: BtcCollectionViewCell.reuseID)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.showsHorizontalScrollIndicator = false
+        collectionView.backgroundColor = .white
         return collectionView
     }()
+    
+    // MARK: - Life Cycle
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    // MARK: - Private
+    
+    private func setupLayoutConstraintTableView() {
+        NSLayoutConstraint.activate([
+
+        ])
+    }
     
     // MARK: - Public method
     

@@ -14,6 +14,7 @@ class BtcCollectionViewCell: UICollectionViewCell {
     lazy var view: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .lightGray
         return view
     }()
     
@@ -53,6 +54,10 @@ class BtcCollectionViewCell: UICollectionViewCell {
             symbol.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             symbol.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
+    }
+    
+    func fillCell(_ bitcoinResponse: BitcoinResponse ) {
+
     }
     
 }

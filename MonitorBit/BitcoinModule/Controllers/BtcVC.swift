@@ -14,6 +14,7 @@ class BtcVC: UIViewController {
     private let btcView = BtcView()
     private var viewModel = BtcVM()
     
+    // MARK: -test
     private var bitcoinResponse = [BitcoinResponse]()
     
     // MARK: - Bar Button Items
@@ -36,6 +37,9 @@ class BtcVC: UIViewController {
         super.viewDidLoad()
         setupController()
         setupConstraint()
+        
+        setupStackViewConstraint()
+        setupСollectionViews()
         setDelegates()
     }
     
@@ -50,14 +54,12 @@ class BtcVC: UIViewController {
         viewModel.networkManager.fetchExchangeRate { [self] (exchangeRate) in
             
             guard let exchangeRate = exchangeRate else { return }
-            
             btcView.fillCellWithText(exchangeRate)
             
-            // O(1)
-            if btcView.usdLbl.text?.last == "$" {
-                title = "1 BTC ="
-                btcView.dateLbl.isHidden = false
-            }
+            let currentEUR = exchangeRate.EUR.symbol
+  //          bitcoinResponse.append()
+            btcView.collectionView.reloadData()
+            
         }
     }
     
@@ -80,12 +82,14 @@ extension BtcVC {
     private func setDelegates() {
         btcView.tableView.delegate = self
         btcView.tableView.dataSource = self
+        btcView.collectionView.delegate = self
+        btcView.collectionView.dataSource = self
     }
     
     // MARK: Setup NavigationController
     private func setupController() {
         title = "BTC"
-        view.backgroundColor = .darkGray
+        view.backgroundColor = .lightGray
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItems = [ saveToCoreDataButtonItem,
                                                fetchJSONButtonItem ]
@@ -94,28 +98,25 @@ extension BtcVC {
     // MARK: - Setup Constraint
     private func setupConstraint() {
         view.addSubview(btcView.stackView)
-        view.addSubview(btcView.dateLbl)
-        view.addSubview(btcView.tableView)
+    }
+    
+    private func setupStackViewConstraint() {
+        setupСollectionViews()
         
-        NSLayoutConstraint.activate([      
-            btcView.stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            btcView.stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 18.0),
+        NSLayoutConstraint.activate([
             btcView.stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             btcView.stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            
-            btcView.dateLbl.widthAnchor.constraint(greaterThanOrEqualToConstant: 74.0),
-            btcView.dateLbl.heightAnchor.constraint(greaterThanOrEqualToConstant: 21.0),
-            btcView.dateLbl.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16.0),
-            btcView.dateLbl.leadingAnchor.constraint(greaterThanOrEqualTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 230),
-            
-            btcView.tableView.topAnchor.constraint(equalTo: btcView.dateLbl.bottomAnchor),
-            btcView.tableView.topAnchor.constraint(equalTo: btcView.stackView.bottomAnchor, constant: 28.5),
-            btcView.tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            btcView.tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            btcView.tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            btcView.stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            btcView.stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
- 
+    
+    private func setupСollectionViews() {
+        NSLayoutConstraint.activate([
+            btcView.collectionView.heightAnchor.constraint(equalToConstant: view.frame.width / 4)
+        ])
+        
+    }
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
@@ -175,14 +176,22 @@ extension BtcVC: UITableViewDataSource, UITableViewDelegate {
 
 // MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 
-extension BtcVC: UICollectionViewDataSource, UICollectionViewDelegate {
+extension BtcVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return bitcoinResponse.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BtcCollectionViewCell.reuseID,
+                                                      for: indexPath) as! BtcCollectionViewCell
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: (btcView.collectionView.frame.width / 2.5),
+                      height: (btcView.collectionView.frame.width / 5.0) )
     }
     
 }

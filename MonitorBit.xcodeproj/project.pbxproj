@@ -68,9 +68,9 @@
 		7B42B09B2613566C008B1178 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7B802EE3266256160026AB85 /* BtcView.swift */,
 				7B433D68260E7DDC00432003 /* BtcTableViewCell.swift */,
 				7BF6073D2663D55100526581 /* BtcCollectionViewCell.swift */,
-				7B802EE3266256160026AB85 /* BtcView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
