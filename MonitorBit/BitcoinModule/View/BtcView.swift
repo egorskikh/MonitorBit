@@ -66,8 +66,23 @@ class BtcView: UIView {
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(BtcTableViewCell.self, forCellReuseIdentifier: BtcTableViewCell.reuseID)
+        tableView.register(BtcTableViewCell.self,
+                           forCellReuseIdentifier: BtcTableViewCell.reuseID)
         return tableView
+    }()
+    
+    // MARK: - New disang
+    
+    lazy var collectionView: UICollectionView = {
+        
+        let layot = UICollectionViewFlowLayout()
+        layot.scrollDirection = .horizontal
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layot)
+        collectionView.register(BtcCollectionViewCell.self,
+                                forCellWithReuseIdentifier: BtcCollectionViewCell.reuseID)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.showsHorizontalScrollIndicator = false
+        return collectionView
     }()
     
     // MARK: - Public method

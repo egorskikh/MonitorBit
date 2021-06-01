@@ -34,6 +34,6 @@ struct BitcoinResponse: Decodable {
 }
 
 struct Details: Decodable {
-    var buy: Double
-    var symbol: String
+    let buy: Double
+    let symbol: String
 }

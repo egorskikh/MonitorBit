@@ -14,6 +14,8 @@ class BtcVC: UIViewController {
     private let btcView = BtcView()
     private var viewModel = BtcVM()
     
+    private var bitcoinResponse = [BitcoinResponse]()
+    
     // MARK: - Bar Button Items
     private lazy var saveToCoreDataButtonItem: UIBarButtonItem = {
         let buttonItem = UIBarButtonItem(barButtonSystemItem: .add,
@@ -171,5 +173,17 @@ extension BtcVC: UITableViewDataSource, UITableViewDelegate {
     
 }
 
+// MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 
+extension BtcVC: UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return bitcoinResponse.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return UICollectionViewCell()
+    }
+    
+}
 
