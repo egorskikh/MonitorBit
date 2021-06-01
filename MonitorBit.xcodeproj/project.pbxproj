@@ -26,7 +26,6 @@
 		7BEE605E265EA99400A9A450 /* History+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEE605A265EA99400A9A450 /* History+CoreDataProperties.swift */; };
 		7BEE605F265EA99400A9A450 /* BTC+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEE605B265EA99400A9A450 /* BTC+CoreDataClass.swift */; };
 		7BEE6060265EA99400A9A450 /* BTC+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEE605C265EA99400A9A450 /* BTC+CoreDataProperties.swift */; };
-		7BF6073E2663D55200526581 /* BtcCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF6073D2663D55100526581 /* BtcCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,7 +50,6 @@
 		7BEE605A265EA99400A9A450 /* History+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "History+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7BEE605B265EA99400A9A450 /* BTC+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BTC+CoreDataClass.swift"; sourceTree = "<group>"; };
 		7BEE605C265EA99400A9A450 /* BTC+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BTC+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		7BF6073D2663D55100526581 /* BtcCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BtcCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +67,6 @@
 			isa = PBXGroup;
 			children = (
 				7B433D68260E7DDC00432003 /* BtcTableViewCell.swift */,
-				7BF6073D2663D55100526581 /* BtcCollectionViewCell.swift */,
 				7B802EE3266256160026AB85 /* BtcView.swift */,
 			);
 			path = View;
@@ -322,7 +319,6 @@
 				7BD4118F261C7A5E00656B40 /* Model.xcdatamodeld in Sources */,
 				7BEE605D265EA99400A9A450 /* History+CoreDataClass.swift in Sources */,
 				7B9090D4260CF625002EE383 /* SceneDelegate.swift in Sources */,
-				7BF6073E2663D55200526581 /* BtcCollectionViewCell.swift in Sources */,
 				7B9090FE260CF9AF002EE383 /* NetworkDataFetcher.swift in Sources */,
 				7BEE6058265E9F6100A9A450 /* CoreDataStack.swift in Sources */,
 				7BEE6060265EA99400A9A450 /* BTC+CoreDataProperties.swift in Sources */,
