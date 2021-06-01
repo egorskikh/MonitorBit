@@ -18,7 +18,7 @@ class BtcView: UIView {
         stackView.axis = .vertical
         stackView.distribution = .fill
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.spacing = 11
+        stackView.spacing = 3
         return stackView
     }()
     
