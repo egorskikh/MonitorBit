@@ -102,6 +102,7 @@ extension BtcVC {
             btcView.stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 18.0),
             btcView.stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             btcView.stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            btcView.stackView.heightAnchor.constraint(equalToConstant: 100),
             
             btcView.dateLbl.widthAnchor.constraint(greaterThanOrEqualToConstant: 74.0),
             btcView.dateLbl.heightAnchor.constraint(greaterThanOrEqualToConstant: 21.0),
@@ -173,17 +174,5 @@ extension BtcVC: UITableViewDataSource, UITableViewDelegate {
     
 }
 
-// MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 
-extension BtcVC: UICollectionViewDataSource, UICollectionViewDelegate {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return bitcoinResponse.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
-    }
-    
-}
 
