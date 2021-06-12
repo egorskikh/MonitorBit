@@ -10,9 +10,9 @@ Stack:
 - UIKit
 - UITableView
 
+![Снимок экрана 2021-06-12 в 19 10 44](https://user-images.githubusercontent.com/60622982/121782414-02693a80-cbb2-11eb-8b5c-c7d8e9ecb07f.png)![Снимок экрана 2021-06-12 в 19 10 54](https://user-images.githubusercontent.com/60622982/121782413-01d0a400-cbb2-11eb-945d-73fa99b02255.png)
+![Снимок экрана 2021-06-12 в 19 11 01](https://user-images.githubusercontent.com/60622982/121782410-01380d80-cbb2-11eb-983f-317f4a4170ec.png)
 
-![Снимок экрана 2021-06-12 в 14 34 09](https://user-images.githubusercontent.com/60622982/121774519-6f1d0e80-cb8b-11eb-8daf-878f7b4384ae.png)![Снимок экрана 2021-06-12 в 14 34 17](https://user-images.githubusercontent.com/60622982/121774527-73492c00-cb8b-11eb-85d6-0228a114835a.png)
-![Снимок экрана 2021-06-12 в 14 34 28](https://user-images.githubusercontent.com/60622982/121774532-7d6b2a80-cb8b-11eb-9af7-333f8ad5a3b4.png)![Снимок экрана 2021-06-12 в 14 34 34](https://user-images.githubusercontent.com/60622982/121774534-7f34ee00-cb8b-11eb-861a-c05ad5c6d5b7.png)
 
 
 
