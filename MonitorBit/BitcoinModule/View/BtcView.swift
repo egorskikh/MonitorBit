@@ -11,18 +11,6 @@ class BtcView: UIView {
     
     // MARK: - UI Elements
     
-    lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [ dateLbl,
-                                                        collectionView,
-                                                        tableView
-                                                        ])
-        stackView.axis = .vertical
-        stackView.distribution = .fill
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.spacing = 0
-        return stackView
-    }()
-    
     // --- del later
     lazy var usdLbl: UILabel = {
         let label = UILabel()

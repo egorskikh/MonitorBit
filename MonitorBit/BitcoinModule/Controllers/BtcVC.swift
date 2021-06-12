@@ -17,6 +17,10 @@ class BtcVC: UIViewController {
     // TODO
     private var bitcoinResponse = [Details]()
     
+    var isMenuOpen = false
+    weak var menuHeightConstraint: NSLayoutConstraint!
+    // ----
+    
     // MARK: - Bar Button Items
     private lazy var saveToCoreDataButtonItem: UIBarButtonItem = {
         let buttonItem = UIBarButtonItem(barButtonSystemItem: .add,
@@ -39,7 +43,6 @@ class BtcVC: UIViewController {
         setupConstraint()
         
         setupStackViewConstraint()
-        setupСollectionViews()
         setDelegates()
     }
     
@@ -50,6 +53,9 @@ class BtcVC: UIViewController {
     
     // MARK: - Action
     @objc private func fetchJSONTapped(sender: UIBarButtonItem) {
+        
+        //
+ //       menuHeightConstraint.constant = isMenuOpen ? 184.0 : 44.0
         
         viewModel.networkManager.fetchExchangeRate { [self] (exchangeRate) in
             
@@ -95,26 +101,32 @@ extension BtcVC {
     
     // MARK: - Setup Constraint
     private func setupConstraint() {
-        view.addSubview(btcView.stackView)
+        view.addSubview(btcView.dateLbl)
+        view.addSubview(btcView.collectionView)
+        view.addSubview(btcView.tableView)
     }
     
     private func setupStackViewConstraint() {
-        setupСollectionViews()
-        
+    
         NSLayoutConstraint.activate([
-            btcView.stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            btcView.stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            btcView.stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            btcView.stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            
+            btcView.dateLbl.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            btcView.dateLbl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            btcView.dateLbl.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            btcView.collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            btcView.collectionView.topAnchor.constraint(equalTo: btcView.dateLbl.bottomAnchor),
+            btcView.collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            btcView.collectionView.heightAnchor.constraint(equalToConstant: view.frame.width / 4),
+            
+            btcView.tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            btcView.tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            btcView.tableView.topAnchor.constraint(equalTo: btcView.collectionView.bottomAnchor),
+            btcView.tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+      
         ])
     }
     
-    private func setupСollectionViews() {
-        NSLayoutConstraint.activate([
-            btcView.collectionView.heightAnchor.constraint(equalToConstant: view.frame.width / 4)
-        ])
-        
-    }
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
