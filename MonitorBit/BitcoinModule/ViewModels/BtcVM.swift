@@ -52,7 +52,7 @@ class BtcVM: BtcViewModelType {
           }
     }
     
-    func numberOfRows() -> Int {
+    func numberOfRowsTableView() -> Int {
         return currentBtc?.history?.count ?? 0
     }
       

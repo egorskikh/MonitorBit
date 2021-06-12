@@ -54,10 +54,8 @@ class BtcVC: UIViewController {
         viewModel.networkManager.fetchExchangeRate { [self] (exchangeRate) in
             
             guard let exchangeRate = exchangeRate else { return }
-            btcView.fillCellWithText(exchangeRate)
             
-            let currentEUR = exchangeRate.EUR.symbol
-  //          bitcoinResponse.append()
+            btcView.fillCellWithText(exchangeRate)
             btcView.collectionView.reloadData()
             
         }
@@ -135,7 +133,7 @@ extension BtcVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfRows()
+        return viewModel.numberOfRowsTableView()
     }
     
     func tableView(_ tableView: UITableView,
