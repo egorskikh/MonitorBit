@@ -15,7 +15,7 @@ class BtcVC: UIViewController {
     private var viewModel = BtcVM()
     
     // MARK: -test
-    private var bitcoinResponse = [BitcoinResponse]()
+    private var bitcoinResponse = [Details]()
     
     // MARK: - Bar Button Items
     private lazy var saveToCoreDataButtonItem: UIBarButtonItem = {
@@ -55,6 +55,7 @@ class BtcVC: UIViewController {
             
             guard let exchangeRate = exchangeRate else { return }
             
+            bitcoinResponse = viewModel.getArray(exchangeRate)
             btcView.fillCellWithText(exchangeRate)
             btcView.collectionView.reloadData()
             
@@ -183,7 +184,8 @@ extension BtcVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollect
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BtcCollectionViewCell.reuseID,
                                                       for: indexPath) as! BtcCollectionViewCell
-        
+        let btc = bitcoinResponse[indexPath.item]
+        cell.fillCell(btc)
         return cell
     }
     

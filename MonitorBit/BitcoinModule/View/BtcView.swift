@@ -23,7 +23,7 @@ class BtcView: UIView {
         return stackView
     }()
     
-    // ---
+    // --- del later
     lazy var usdLbl: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -47,7 +47,7 @@ class BtcView: UIView {
         label.textColor = .white
         return label
     }()
-    // ---
+    // --- del later
     
     lazy var dateLbl: UILabel = {
         
