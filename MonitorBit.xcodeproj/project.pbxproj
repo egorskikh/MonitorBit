@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1495AB1926751166004CC27E /* BtcCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1495AB1826751166004CC27E /* BtcCollectionViewCell.swift */; };
 		7B433D69260E7DDC00432003 /* BtcTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B433D68260E7DDC00432003 /* BtcTableViewCell.swift */; };
 		7B56DA9C26610D5A0061C4C3 /* BtcVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B56DA9B26610D5A0061C4C3 /* BtcVM.swift */; };
 		7B56DAA426611E0F0061C4C3 /* BtcViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B56DAA326611E0F0061C4C3 /* BtcViewModelType.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1495AB1826751166004CC27E /* BtcCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BtcCollectionViewCell.swift; sourceTree = "<group>"; };
 		7B433D68260E7DDC00432003 /* BtcTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BtcTableViewCell.swift; sourceTree = "<group>"; };
 		7B56DA9B26610D5A0061C4C3 /* BtcVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BtcVM.swift; sourceTree = "<group>"; };
 		7B56DAA326611E0F0061C4C3 /* BtcViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BtcViewModelType.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				7B433D68260E7DDC00432003 /* BtcTableViewCell.swift */,
+				1495AB1826751166004CC27E /* BtcCollectionViewCell.swift */,
 				7B802EE3266256160026AB85 /* BtcView.swift */,
 			);
 			path = View;
@@ -319,6 +322,7 @@
 				7BD4118F261C7A5E00656B40 /* Model.xcdatamodeld in Sources */,
 				7BEE605D265EA99400A9A450 /* History+CoreDataClass.swift in Sources */,
 				7B9090D4260CF625002EE383 /* SceneDelegate.swift in Sources */,
+				1495AB1926751166004CC27E /* BtcCollectionViewCell.swift in Sources */,
 				7B9090FE260CF9AF002EE383 /* NetworkDataFetcher.swift in Sources */,
 				7BEE6058265E9F6100A9A450 /* CoreDataStack.swift in Sources */,
 				7BEE6060265EA99400A9A450 /* BTC+CoreDataProperties.swift in Sources */,
