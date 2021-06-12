@@ -11,7 +11,10 @@ Stack:
 - UITableView
 
 
-![ghBtc](https://user-images.githubusercontent.com/60622982/119444023-40054100-bd33-11eb-9a0a-4aa8d9b919bb.gif)
+![Снимок экрана 2021-06-12 в 14 34 09](https://user-images.githubusercontent.com/60622982/121774519-6f1d0e80-cb8b-11eb-8daf-878f7b4384ae.png)![Снимок экрана 2021-06-12 в 14 34 17](https://user-images.githubusercontent.com/60622982/121774527-73492c00-cb8b-11eb-85d6-0228a114835a.png)
+![Снимок экрана 2021-06-12 в 14 34 28](https://user-images.githubusercontent.com/60622982/121774532-7d6b2a80-cb8b-11eb-9af7-333f8ad5a3b4.png)![Снимок экрана 2021-06-12 в 14 34 34](https://user-images.githubusercontent.com/60622982/121774534-7f34ee00-cb8b-11eb-861a-c05ad5c6d5b7.png)
+
+
 
 ## Add later
 
