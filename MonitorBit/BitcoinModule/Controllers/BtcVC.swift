@@ -25,6 +25,7 @@ class BtcVC: UIViewController {
         let buttonItem = UIBarButtonItem(barButtonSystemItem: .add,
                                          target: self,
                                          action: #selector(saveCoreDate))
+        buttonItem.tintColor = .white
         return buttonItem
     }()
     
@@ -32,6 +33,7 @@ class BtcVC: UIViewController {
         let buttonItem = UIBarButtonItem(barButtonSystemItem: .search,
                                          target: self,
                                          action: #selector(fetchJSONTapped))
+        buttonItem.tintColor = .white
         return buttonItem
     }()
     
