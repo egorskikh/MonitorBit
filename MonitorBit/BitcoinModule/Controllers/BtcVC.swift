@@ -17,9 +17,8 @@ class BtcVC: UIViewController {
     // TODO
     private var bitcoinResponse = [Details]()
     
-    var isMenuOpen = false
-    weak var menuHeightConstraint: NSLayoutConstraint!
-    // ----
+    var isCollectionOpen = false
+    var visibleConstraint: NSLayoutConstraint?
     
     // MARK: - Bar Button Items
     private lazy var saveToCoreDataButtonItem: UIBarButtonItem = {
@@ -40,9 +39,7 @@ class BtcVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupController()
-        setupConstraint()
-        
-        setupStackViewConstraint()
+        setupUIConstraint()
         setDelegates()
     }
     
@@ -54,8 +51,14 @@ class BtcVC: UIViewController {
     // MARK: - Action
     @objc private func fetchJSONTapped(sender: UIBarButtonItem) {
         
-        //
- //       menuHeightConstraint.constant = isMenuOpen ? 184.0 : 44.0
+        if !isCollectionOpen {
+            visibleConstraint?.isActive = true
+            isCollectionOpen = true
+        } else {
+            visibleConstraint?.isActive = false
+            isCollectionOpen = false
+            return
+        }
         
         viewModel.networkManager.fetchExchangeRate { [self] (exchangeRate) in
             
@@ -100,14 +103,18 @@ extension BtcVC {
     }
     
     // MARK: - Setup Constraint
-    private func setupConstraint() {
+    
+    private func setupUIConstraint() {
         view.addSubview(btcView.dateLbl)
         view.addSubview(btcView.collectionView)
         view.addSubview(btcView.tableView)
-    }
-    
-    private func setupStackViewConstraint() {
-    
+        
+        // For animation
+        let hiddenConstraint = btcView.collectionView.heightAnchor.constraint(equalToConstant: 0)
+        hiddenConstraint.priority = UILayoutPriority.required - 1
+        visibleConstraint = btcView.collectionView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1 / 4)
+        
+        
         NSLayoutConstraint.activate([
             
             btcView.dateLbl.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -117,13 +124,12 @@ extension BtcVC {
             btcView.collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             btcView.collectionView.topAnchor.constraint(equalTo: btcView.dateLbl.bottomAnchor),
             btcView.collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            btcView.collectionView.heightAnchor.constraint(equalToConstant: view.frame.width / 4),
+            btcView.collectionView.heightAnchor.constraint(equalToConstant: hiddenConstraint.constant),
             
             btcView.tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             btcView.tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             btcView.tableView.topAnchor.constraint(equalTo: btcView.collectionView.bottomAnchor),
             btcView.tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-      
         ])
     }
     
