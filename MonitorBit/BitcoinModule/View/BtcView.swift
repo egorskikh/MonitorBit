@@ -11,31 +11,20 @@ class BtcView: UIView {
     
     // MARK: - UI Elements
     
-    // --- del later
     lazy var usdLbl: UILabel = {
         let label = UILabel()
-        label.textAlignment = .center
-        label.text = ""
-        label.textColor = .white
         return label
     }()
     
     lazy var eurLbl: UILabel = {
         let label = UILabel()
-        label.textAlignment = .center
-        label.text = ""
-        label.textColor = .white
         return label
     }()
     
     lazy var rubLbl: UILabel = {
         let label = UILabel()
-        label.textAlignment = .center
-        label.text = ""
-        label.textColor = .white
         return label
     }()
-    // --- del later
     
     lazy var dateLbl: UILabel = {
         

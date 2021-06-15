@@ -16,7 +16,6 @@ class BtcVC: UIViewController {
     
     // TODO
     private var bitcoinResponse = [Details]()
-    
     var isCollectionOpen = false
     var visibleConstraint: NSLayoutConstraint?
     
@@ -41,7 +40,7 @@ class BtcVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupController()
-        setupUIConstraint()
+        storeConstraint()
         setDelegates()
     }
     
@@ -106,7 +105,7 @@ extension BtcVC {
     
     // MARK: - Setup Constraint
     
-    private func setupUIConstraint() {
+    private func storeConstraint() {
         view.addSubview(btcView.dateLbl)
         view.addSubview(btcView.collectionView)
         view.addSubview(btcView.tableView)
@@ -165,12 +164,12 @@ extension BtcVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let cell = tableView.dequeueReusableCell(withIdentifier: BtcTableViewCell.reuseID,
+                                                 for: indexPath) as! BtcTableViewCell
         guard
-            let cell = tableView.dequeueReusableCell(withIdentifier: BtcTableViewCell.reuseID,
-                                                     for: indexPath) as? BtcTableViewCell,
             let btcHistory = viewModel.currentBtc?.history?[indexPath.row] as? History
         else {
-            return UITableViewCell()
+            return cell
         }
         cell.fillCellWithText(btcHistory)
         return cell
