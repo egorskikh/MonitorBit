@@ -12,12 +12,7 @@ class BtcVC: UIViewController {
     
     // MARK: - Property
     private let btcView = BtcView()
-    private var viewModel = BtcVM()
-    
-    // TODO
-    private var bitcoinResponse = [Details]()
-    var isCollectionOpen = false
-    var visibleConstraint: NSLayoutConstraint?
+    private var btcViewModel = BtcVM()
     
     // MARK: - Bar Button Items
     private lazy var saveToCoreDataButtonItem: UIBarButtonItem = {
@@ -46,26 +41,26 @@ class BtcVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.fetchFromCoreData()
+        btcViewModel.fetchFromCoreData()
     }
     
     // MARK: - Action
     @objc private func fetchJSONTapped(sender: UIBarButtonItem) {
         
-        if !isCollectionOpen {
-            visibleConstraint?.isActive = true
-            isCollectionOpen = true
+        if !btcViewModel.isCollectionOpen {
+            btcViewModel.visibleConstraint?.isActive = true
+            btcViewModel.isCollectionOpen = true
         } else {
-            visibleConstraint?.isActive = false
-            isCollectionOpen = false
+            btcViewModel.visibleConstraint?.isActive = false
+            btcViewModel.isCollectionOpen = false
             return
         }
         
-        viewModel.networkManager.fetchExchangeRate { [self] (exchangeRate) in
+        btcViewModel.networkManager.fetchExchangeRate { [self] (exchangeRate) in
             
             guard let exchangeRate = exchangeRate else { return }
             
-            bitcoinResponse = viewModel.getArray(exchangeRate)
+            btcViewModel.bitcoinResponse = btcViewModel.getArray(exchangeRate)
             btcView.fillCellWithText(exchangeRate)
             btcView.collectionView.reloadData()
             
@@ -74,7 +69,7 @@ class BtcVC: UIViewController {
     
     @objc private func saveCoreDate() {
         if btcView.usdLbl.text == "" { return }
-        viewModel.saveToCoreDate(usd: btcView.usdLbl,
+        btcViewModel.saveToCoreDate(usd: btcView.usdLbl,
                                  eur: btcView.eurLbl,
                                  rub: btcView.rubLbl,
                                  date: btcView.dateLbl)
@@ -113,7 +108,7 @@ extension BtcVC {
         // For animation
         let hiddenConstraint = btcView.collectionView.heightAnchor.constraint(equalToConstant: 0)
         hiddenConstraint.priority = UILayoutPriority.required - 1
-        visibleConstraint = btcView.collectionView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1 / 4)
+        btcViewModel.visibleConstraint = btcView.collectionView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1 / 4)
         
         
         NSLayoutConstraint.activate([
@@ -158,7 +153,7 @@ extension BtcVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfRowsTableView()
+        return btcViewModel.numberOfRowsTableView()
     }
     
     func tableView(_ tableView: UITableView,
@@ -167,7 +162,7 @@ extension BtcVC: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: BtcTableViewCell.reuseID,
                                                  for: indexPath) as! BtcTableViewCell
         guard
-            let btcHistory = viewModel.currentBtc?.history?[indexPath.row] as? History
+            let btcHistory = btcViewModel.currentBtc?.history?[indexPath.row] as? History
         else {
             return cell
         }
@@ -187,11 +182,11 @@ extension BtcVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView,
                    commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard
-            let historyToRemove = viewModel.currentBtc?.history?[indexPath.row] as? History
+            let historyToRemove = btcViewModel.currentBtc?.history?[indexPath.row] as? History
         else {
             return
         }
-        viewModel.deleteFromCoreData(historyToRemove)
+        btcViewModel.deleteFromCoreData(historyToRemove)
         btcView.tableView.deleteRows(at: [indexPath], with: .automatic)
     }
     
@@ -201,13 +196,13 @@ extension BtcVC: UITableViewDataSource, UITableViewDelegate {
 extension BtcVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return bitcoinResponse.count
+        return btcViewModel.numberOfRowsCollectionView() 
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BtcCollectionViewCell.reuseID,
                                                       for: indexPath) as! BtcCollectionViewCell
-        let btc = bitcoinResponse[indexPath.item]
+        let btc = btcViewModel.bitcoinResponse[indexPath.item]
         cell.fillCell(btc)
         return cell
     }

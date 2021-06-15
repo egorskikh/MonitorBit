@@ -13,6 +13,9 @@ class BtcVM: BtcViewModelType {
     let networkManager = NetworkDataFetcher()
     let coreDataManager = CoreDataStack(modelName: "Model")
     var currentBtc: BTC?
+    var isCollectionOpen = false
+    var visibleConstraint: NSLayoutConstraint?
+    var bitcoinResponse = [Details]() 
     
     func saveToCoreDate(usd: UILabel,
                         eur: UILabel,
@@ -54,6 +57,10 @@ class BtcVM: BtcViewModelType {
     
     func numberOfRowsTableView() -> Int {
         return currentBtc?.history?.count ?? 0
+    }
+    
+    func numberOfRowsCollectionView() -> Int {
+        return bitcoinResponse.count
     }
     
     func getArray(_ response: BitcoinResponse) -> [Details] {
