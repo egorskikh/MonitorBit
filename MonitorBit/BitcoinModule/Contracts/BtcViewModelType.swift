@@ -24,4 +24,5 @@ protocol BtcViewModelType {
     func deleteFromCoreData(_ historyToRemove: History)
     func fetchFromCoreData()
     func numberOfRowsTableView() -> Int
+    func numberOfRowsCollectionView() -> Int
 }
