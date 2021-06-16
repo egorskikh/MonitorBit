@@ -11,9 +11,9 @@ protocol BtcViewModelType {
     
     var networkManager: NetworkDataFetcher { get }
     var coreDataManager: CoreDataStack { get }
-    var currentBtc: BTC? { get set}
+    var currentBtc: BTC? { get }
     var bitcoinResponse: [Details] { get }
-    var isCollectionOpen: Bool { get set }
+    var isCollectionOpen: Bool { get }
     var visibleConstraint: NSLayoutConstraint? { get }
     
     func saveToCoreDate(usd: UILabel,
