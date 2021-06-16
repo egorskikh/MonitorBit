@@ -11,7 +11,7 @@ import CoreData
 class BtcVC: UIViewController {
     
     // MARK: - Property
-    private let btcView = BtcView()
+    private var btcView = BtcView()
     private var btcViewModel = BtcVM()
     
     // MARK: - Bar Button Items
@@ -60,7 +60,7 @@ class BtcVC: UIViewController {
             
             guard let exchangeRate = exchangeRate else { return }
             
-            btcViewModel.bitcoinResponse = btcViewModel.getArray(exchangeRate)
+            btcViewModel.bitcoinResponse = btcViewModel.asArray(exchangeRate)
             btcView.fillCellWithText(exchangeRate)
             btcView.collectionView.reloadData()
             
@@ -82,6 +82,7 @@ class BtcVC: UIViewController {
 // MARK: - Private method
 extension BtcVC {
     
+    // MARK: Set delegates
     private func setDelegates() {
         btcView.tableView.delegate = self
         btcView.tableView.dataSource = self
@@ -98,8 +99,7 @@ extension BtcVC {
                                                fetchJSONButtonItem ]
     }
     
-    // MARK: - Setup Constraint
-    
+    // MARK: - Store constraint
     private func storeConstraint() {
         view.addSubview(btcView.dateLbl)
         view.addSubview(btcView.collectionView)
@@ -112,7 +112,6 @@ extension BtcVC {
         
         
         NSLayoutConstraint.activate([
-            
             btcView.dateLbl.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             btcView.dateLbl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             btcView.dateLbl.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -209,7 +208,7 @@ extension BtcVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollect
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: (btcView.collectionView.frame.width / 2.5),
-                      height: (btcView.collectionView.frame.width / 5.0) )
+                      height: (btcView.collectionView.frame.width / 5.0))
     }
     
 }

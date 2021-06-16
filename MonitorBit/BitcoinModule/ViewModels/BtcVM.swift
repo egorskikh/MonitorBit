@@ -10,11 +10,15 @@ import CoreData
 
 class BtcVM: BtcViewModelType {
     
+    // managers
     let networkManager = NetworkDataFetcher()
-    let coreDataManager = CoreDataStack(modelName: "Model")
+    let coreDataManager = CoreDataStack(modelName: "Model")    
+    // for core data
     var currentBtc: BTC?
+    // for animations
     var isCollectionOpen = false
     var visibleConstraint: NSLayoutConstraint?
+    // for collection view
     var bitcoinResponse = [Details]() 
     
     func saveToCoreDate(usd: UILabel,
@@ -63,34 +67,30 @@ class BtcVM: BtcViewModelType {
         return bitcoinResponse.count
     }
     
-    func getArray(_ response: BitcoinResponse) -> [Details] {
-        let array = [
-            Details(buy: response.USD.buy, symbol: response.USD.symbol),
-            Details(buy: response.EUR.buy, symbol: response.EUR.symbol),
-            Details(buy: response.RUB.buy, symbol: response.RUB.symbol),
-            Details(buy: response.AUD.buy, symbol: response.AUD.symbol),
-            Details(buy: response.BRL.buy, symbol: response.BRL.symbol),
-            Details(buy: response.CAD.buy, symbol: response.CAD.symbol),
-            Details(buy: response.CHF.buy, symbol: response.CHF.symbol),
-            Details(buy: response.CLP.buy, symbol: response.CLP.symbol),
-            Details(buy: response.CNY.buy, symbol: response.CNY.symbol),
-            Details(buy: response.DKK.buy, symbol: response.DKK.symbol),
-            Details(buy: response.GBP.buy, symbol: response.GBP.symbol),
-            Details(buy: response.HKD.buy, symbol: response.HKD.symbol),
-            Details(buy: response.INR.buy, symbol: response.INR.symbol),
-            Details(buy: response.ISK.buy, symbol: response.ISK.symbol),
-            Details(buy: response.JPY.buy, symbol: response.JPY.symbol),
-            Details(buy: response.KRW.buy, symbol: response.KRW.symbol),
-            Details(buy: response.NZD.buy, symbol: response.NZD.symbol),
-            Details(buy: response.PLN.buy, symbol: response.PLN.symbol),
-            Details(buy: response.SEK.buy, symbol: response.SEK.symbol),
-            Details(buy: response.SGD.buy, symbol: response.SGD.symbol),
-            Details(buy: response.THB.buy, symbol: response.THB.symbol),
-            Details(buy: response.TRY.buy, symbol: response.TRY.symbol),
-            Details(buy: response.TWD.buy, symbol: response.TWD.symbol)
-        ]
-        
-        return array
+    func asArray(_ response: BitcoinResponse) -> [Details] {
+        [Details(buy: response.USD.buy, symbol: response.USD.symbol),
+         Details(buy: response.EUR.buy, symbol: response.EUR.symbol),
+         Details(buy: response.RUB.buy, symbol: response.RUB.symbol),
+         Details(buy: response.AUD.buy, symbol: response.AUD.symbol),
+         Details(buy: response.BRL.buy, symbol: response.BRL.symbol),
+         Details(buy: response.CAD.buy, symbol: response.CAD.symbol),
+         Details(buy: response.CHF.buy, symbol: response.CHF.symbol),
+         Details(buy: response.CLP.buy, symbol: response.CLP.symbol),
+         Details(buy: response.CNY.buy, symbol: response.CNY.symbol),
+         Details(buy: response.DKK.buy, symbol: response.DKK.symbol),
+         Details(buy: response.GBP.buy, symbol: response.GBP.symbol),
+         Details(buy: response.HKD.buy, symbol: response.HKD.symbol),
+         Details(buy: response.INR.buy, symbol: response.INR.symbol),
+         Details(buy: response.ISK.buy, symbol: response.ISK.symbol),
+         Details(buy: response.JPY.buy, symbol: response.JPY.symbol),
+         Details(buy: response.KRW.buy, symbol: response.KRW.symbol),
+         Details(buy: response.NZD.buy, symbol: response.NZD.symbol),
+         Details(buy: response.PLN.buy, symbol: response.PLN.symbol),
+         Details(buy: response.SEK.buy, symbol: response.SEK.symbol),
+         Details(buy: response.SGD.buy, symbol: response.SGD.symbol),
+         Details(buy: response.THB.buy, symbol: response.THB.symbol),
+         Details(buy: response.TRY.buy, symbol: response.TRY.symbol),
+         Details(buy: response.TWD.buy, symbol: response.TWD.symbol)]
     }
     
 }
