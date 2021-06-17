@@ -17,18 +17,17 @@ Stack:
 
 
 ## Add later
-
 - [x] If there is no data, the results are not saved
 - [x] Get rid of the storyboard entirely.
 - [x] Design UI beautifully.
 - [x] Fix code duplication in Core Data usage with Core Data Stack
 - [x] Transition to MVVM architecture. The project turns into a massive-view-controller.
 - [x] Show the current exchange rate when the button is pressed. The table will move down, and the current bitcoin rate will be visible.
+- [ ] Send a notification once a day: "Have you seen the bitcoin price today?".
 - [ ] Add sorting by price (> && <).
-- [ ] Start covering with tests
-
 
 ## Task for the distant future.
 - [ ] Change architecture to VIPER.
+- [ ] Start covering with tests
 - [ ] Add a second view controller with the help of a tab bar on which there will be a graph of added prices.
-- [ ] Send a notification once a day: "Have you seen the bitcoin price today?".
+
