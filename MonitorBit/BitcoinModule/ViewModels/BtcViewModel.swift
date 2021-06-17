@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class BtcVM: BtcViewModelType {
+class BtcViewModel: BtcViewModelType {
     
     // managers
     let networkManager = NetworkDataFetcher()

@@ -12,7 +12,7 @@ class BtcVC: UIViewController {
     
     // MARK: - Property
     private var btcView = BtcView()
-    private var btcViewModel = BtcVM()
+    private var btcViewModel = BtcViewModel()
     
     // MARK: - Bar Button Items
     private lazy var saveToCoreDataButtonItem: UIBarButtonItem = {
@@ -46,25 +46,24 @@ class BtcVC: UIViewController {
     
     // MARK: - Action
     @objc private func fetchJSONTapped(sender: UIBarButtonItem) {
-        
-        if !btcViewModel.isCollectionOpen {
-            btcViewModel.visibleConstraint?.isActive = true
-            btcViewModel.isCollectionOpen = true
-        } else {
-            btcViewModel.visibleConstraint?.isActive = false
-            btcViewModel.isCollectionOpen = false
-            return
-        }
-        
+          
         btcViewModel.networkManager.fetchExchangeRate { [self] (exchangeRate) in
             
             guard let exchangeRate = exchangeRate else { return }
             
-            btcViewModel.bitcoinResponse = btcViewModel.asArray(exchangeRate)
-            btcView.fillCellWithText(exchangeRate)
-            btcView.collectionView.reloadData()
-            
+            if !btcViewModel.isCollectionOpen {
+                btcViewModel.visibleConstraint?.isActive = true
+                btcViewModel.isCollectionOpen = true
+                btcViewModel.bitcoinResponse = btcViewModel.asArray(exchangeRate)
+                btcView.fillCellWithText(exchangeRate)
+                btcView.collectionView.reloadData()
+            } else {
+                btcViewModel.visibleConstraint?.isActive = false
+                btcViewModel.isCollectionOpen = false
+                return
+            }
         }
+        
     }
     
     @objc private func saveCoreDate() {

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		1495AB1926751166004CC27E /* BtcCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1495AB1826751166004CC27E /* BtcCollectionViewCell.swift */; };
 		7B433D69260E7DDC00432003 /* BtcTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B433D68260E7DDC00432003 /* BtcTableViewCell.swift */; };
-		7B56DA9C26610D5A0061C4C3 /* BtcVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B56DA9B26610D5A0061C4C3 /* BtcVM.swift */; };
+		7B56DA9C26610D5A0061C4C3 /* BtcViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B56DA9B26610D5A0061C4C3 /* BtcViewModel.swift */; };
 		7B56DAA426611E0F0061C4C3 /* BtcViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B56DAA326611E0F0061C4C3 /* BtcViewModelType.swift */; };
 		7B6E7F0B260D24D000732537 /* BitcoinResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6E7F0A260D24D000732537 /* BitcoinResponse.swift */; };
 		7B802EE4266256160026AB85 /* BtcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B802EE3266256160026AB85 /* BtcView.swift */; };
@@ -32,7 +32,7 @@
 /* Begin PBXFileReference section */
 		1495AB1826751166004CC27E /* BtcCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BtcCollectionViewCell.swift; sourceTree = "<group>"; };
 		7B433D68260E7DDC00432003 /* BtcTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BtcTableViewCell.swift; sourceTree = "<group>"; };
-		7B56DA9B26610D5A0061C4C3 /* BtcVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BtcVM.swift; sourceTree = "<group>"; };
+		7B56DA9B26610D5A0061C4C3 /* BtcViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BtcViewModel.swift; sourceTree = "<group>"; };
 		7B56DAA326611E0F0061C4C3 /* BtcViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BtcViewModelType.swift; sourceTree = "<group>"; };
 		7B6E7F0A260D24D000732537 /* BitcoinResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinResponse.swift; sourceTree = "<group>"; };
 		7B802EE3266256160026AB85 /* BtcView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BtcView.swift; sourceTree = "<group>"; };
@@ -215,7 +215,7 @@
 		7B9090F6260CF936002EE383 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				7B56DA9B26610D5A0061C4C3 /* BtcVM.swift */,
+				7B56DA9B26610D5A0061C4C3 /* BtcViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -329,7 +329,7 @@
 				7B6E7F0B260D24D000732537 /* BitcoinResponse.swift in Sources */,
 				7BEE605E265EA99400A9A450 /* History+CoreDataProperties.swift in Sources */,
 				7BEE605F265EA99400A9A450 /* BTC+CoreDataClass.swift in Sources */,
-				7B56DA9C26610D5A0061C4C3 /* BtcVM.swift in Sources */,
+				7B56DA9C26610D5A0061C4C3 /* BtcViewModel.swift in Sources */,
 				7BEE6056265CB99500A9A450 /* NSMutableAttributedString.swift in Sources */,
 				7B9090F9260CF990002EE383 /* NetworkService.swift in Sources */,
 			);
