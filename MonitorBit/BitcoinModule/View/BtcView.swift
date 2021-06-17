@@ -66,23 +66,20 @@ class BtcView: UIView {
     // MARK: - Life Cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
-
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-
+    
     
     // MARK: - Public method
     
-    public func fillCellWithText(_ input: BitcoinResponse) {
-        usdLbl.attributedText = NSMutableAttributedString()
-            .bold(String(input.USD.buy) + " " + String(input.USD.symbol))
-        eurLbl.attributedText = NSMutableAttributedString()
-            .bold(String(input.EUR.buy) + " " + String(input.EUR.symbol))
-        rubLbl.attributedText = NSMutableAttributedString()
-            .bold(String(input.RUB.buy) + " " + String(input.RUB.symbol))
+    public func fillTextToSave(_ input: BitcoinResponse) {
+        usdLbl.text = String(input.USD.buy) + " " + String(input.USD.symbol)
+        eurLbl.text = String(input.EUR.buy) + " " + String(input.EUR.symbol)
+        rubLbl.text = String(input.RUB.buy) + " " + String(input.RUB.symbol)
     }
     
 }

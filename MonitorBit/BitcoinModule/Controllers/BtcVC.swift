@@ -55,7 +55,7 @@ class BtcVC: UIViewController {
                 btcViewModel.visibleConstraint?.isActive = true
                 btcViewModel.isCollectionOpen = true
                 btcViewModel.bitcoinResponse = btcViewModel.asArray(exchangeRate)
-                btcView.fillCellWithText(exchangeRate)
+                btcView.fillTextToSave(exchangeRate)
                 btcView.collectionView.reloadData()
             } else {
                 btcViewModel.visibleConstraint?.isActive = false
