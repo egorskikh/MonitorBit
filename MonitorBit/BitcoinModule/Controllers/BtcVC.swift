@@ -46,7 +46,7 @@ class BtcVC: UIViewController {
     
     // MARK: - Action
     @objc private func fetchJSONTapped(sender: UIBarButtonItem) {
-          
+        
         btcViewModel.networkManager.fetchExchangeRate { [self] (exchangeRate) in
             
             guard let exchangeRate = exchangeRate else { return }
@@ -69,9 +69,9 @@ class BtcVC: UIViewController {
     @objc private func saveCoreDate() {
         if btcView.usdLbl.text == "" { return }
         btcViewModel.saveToCoreDate(usd: btcView.usdLbl,
-                                 eur: btcView.eurLbl,
-                                 rub: btcView.rubLbl,
-                                 date: btcView.dateLbl)
+                                    eur: btcView.eurLbl,
+                                    rub: btcView.rubLbl,
+                                    date: btcView.dateLbl)
         btcView.tableView.reloadData()
     }
     
@@ -107,7 +107,8 @@ extension BtcVC {
         // For animation
         let hiddenConstraint = btcView.collectionView.heightAnchor.constraint(equalToConstant: 0)
         hiddenConstraint.priority = UILayoutPriority.required - 1
-        btcViewModel.visibleConstraint = btcView.collectionView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1 / 4)
+        btcViewModel.visibleConstraint = btcView.collectionView.heightAnchor.constraint(equalTo: view.widthAnchor,
+                                                                                        multiplier: 1 / 4)
         
         
         NSLayoutConstraint.activate([
@@ -150,12 +151,12 @@ extension BtcVC: UITableViewDataSource, UITableViewDelegate {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
         return btcViewModel.numberOfRowsTableView()
     }
     
-    func tableView(_ tableView: UITableView,
-                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: BtcTableViewCell.reuseID,
                                                  for: indexPath) as! BtcTableViewCell
@@ -197,7 +198,8 @@ extension BtcVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollect
         return btcViewModel.numberOfRowsCollectionView() 
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BtcCollectionViewCell.reuseID,
                                                       for: indexPath) as! BtcCollectionViewCell
         let btc = btcViewModel.bitcoinResponse[indexPath.item]
@@ -205,7 +207,8 @@ extension BtcVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollect
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: (btcView.collectionView.frame.width / 2.5),
                       height: (btcView.collectionView.frame.width / 5.0))
     }

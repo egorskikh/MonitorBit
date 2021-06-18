@@ -10,7 +10,8 @@ import UIKit
 extension NSMutableAttributedString {
     
     var fontSize:CGFloat { return 17 }
-    var boldFont:UIFont { return UIFont(name: "AvenirNext-Bold", size: fontSize) ?? UIFont.boldSystemFont(ofSize: fontSize) }
+    var boldFont:UIFont { return UIFont(name: "AvenirNext-Bold",
+                                        size: fontSize) ?? UIFont.boldSystemFont(ofSize: fontSize) }
     
     func bold(_ value:String) -> NSMutableAttributedString {
         
