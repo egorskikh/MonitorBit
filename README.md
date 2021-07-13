@@ -26,9 +26,8 @@ Stack:
 - [x] 06. Show the current exchange rate when the button is pressed. The table will move down, and the current bitcoin rate will be visible.
 - [ ] 07. Send a notification once a day: "Have you seen the bitcoin price today?".
 - [ ] 08. Add sorting by price (> && <).
-
-## Task for the distant future.
-- [ ] 09. Change architecture to VIPER.
-- [ ] 10. Start covering with tests
-- [ ] 11. Add a second view controller with the help of a tab bar on which there will be a graph of added prices.
+- [ ] 09. Add documentation in code.
+- [ ] 10. ~~Change architecture to VIPER.~~ Better to master MVVM. 
+- [ ] 11. Start covering with tests.
+- [ ] 12. Add a second view controller with the help of a tab bar on which there will be a graph of added prices.
 
