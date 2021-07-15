@@ -15,7 +15,7 @@ Stack:
 ![gh4](https://user-images.githubusercontent.com/60622982/121823614-12b30f80-ccaf-11eb-8b9d-611198ae56e0.gif)![1](https://user-images.githubusercontent.com/60622982/121823625-22caef00-ccaf-11eb-90d6-a61e026bf32d.png)
 ![2](https://user-images.githubusercontent.com/60622982/121823627-28283980-ccaf-11eb-88e4-8bcb49790b44.png)![3](https://user-images.githubusercontent.com/60622982/121823630-2a8a9380-ccaf-11eb-9d17-6765f3fa1aea.png)
 ![Снимок экрана 2021-07-09 в 13 43 50](https://user-images.githubusercontent.com/60622982/125066473-b5e32300-e0bb-11eb-843b-d0bf220a8c49.png)
-
+![Снимок экрана 2021-07-15 в 17 39 22](https://user-images.githubusercontent.com/60622982/125806949-0b67ee74-ef63-4890-a122-434804b20f1d.png)
 
 ## Add later
 - [x] 01. If there is no data, the results are not saved
