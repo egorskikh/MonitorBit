@@ -30,6 +30,16 @@ class BtcVC: UIViewController {
         buttonItem.tintColor = .white
         return buttonItem
     }()
+
+    private lazy var sortingButtonItem: UIBarButtonItem = {
+        let image = UIImage(systemName: "arrow.up.arrow.down")
+        let buttonItem = UIBarButtonItem(image: image,
+                                         style: .done ,
+                                         target: self,
+                                         action: #selector(fetchJSONTapped))
+        buttonItem.tintColor = .white
+        return buttonItem
+    }()
     
     // MARK: - View Life Cicle
     override func viewDidLoad() {
@@ -95,7 +105,8 @@ extension BtcVC {
         view.backgroundColor = .lightGray
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItems = [ saveToCoreDataButtonItem,
-                                               fetchJSONButtonItem ]
+                                               sortingButtonItem]
+        navigationItem.leftBarButtonItems = [ fetchJSONButtonItem ]
     }
     
     // MARK: - Store constraint
