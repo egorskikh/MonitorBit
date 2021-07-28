@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20E232" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="BTC" representedClassName="BTC" syncable="YES">
         <attribute name="user" optional="YES" attributeType="String"/>
         <relationship name="history" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="History" inverseName="btc" inverseEntity="History"/>
@@ -11,6 +11,7 @@
         <attribute name="usd" optional="YES" attributeType="String"/>
         <relationship name="btc" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BTC" inverseName="history" inverseEntity="BTC"/>
     </entity>
+    <fetchRequest name="FetchRequest" entity="BTC"/>
     <elements>
         <element name="BTC" positionX="-100.71435546875" positionY="-15.31793212890625" width="128" height="73"/>
         <element name="History" positionX="252.6449584960938" positionY="-16.91000366210938" width="128" height="104"/>

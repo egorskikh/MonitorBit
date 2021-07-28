@@ -121,7 +121,6 @@ extension BtcVC {
         btcViewModel.visibleConstraint = btcView.collectionView.heightAnchor.constraint(equalTo: view.widthAnchor,
                                                                                         multiplier: 1 / 4)
         
-        
         NSLayoutConstraint.activate([
             btcView.dateLbl.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             btcView.dateLbl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -143,25 +142,21 @@ extension BtcVC {
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
 extension BtcVC: UITableViewDataSource, UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 91
-    }
-    
+
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         view.tintColor = UIColor.lightGray
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.textColor = UIColor.black
     }
-    
+
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "price history"
     }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 91
     }
-    
+
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
         return btcViewModel.numberOfRowsTableView()
@@ -203,6 +198,7 @@ extension BtcVC: UITableViewDataSource, UITableViewDelegate {
 }
 
 // MARK: - UICollectionViewDataSource, UICollectionViewDelegate
+
 extension BtcVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

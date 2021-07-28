@@ -78,7 +78,8 @@
 		7B433D66260D6C9000432003 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				7B56DAA126610FEB0061C4C3 /* Helpers */,
+				7BD4118D261C7A5E00656B40 /* Model.xcdatamodeld */,
+				7B56DAA126610FEB0061C4C3 /* NSManagedObject */,
 				7BEE6057265E9F6100A9A450 /* CoreDataStack.swift */,
 			);
 			path = CoreData;
@@ -101,16 +102,15 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
-		7B56DAA126610FEB0061C4C3 /* Helpers */ = {
+		7B56DAA126610FEB0061C4C3 /* NSManagedObject */ = {
 			isa = PBXGroup;
 			children = (
 				7BEE6059265EA99400A9A450 /* History+CoreDataClass.swift */,
 				7BEE605A265EA99400A9A450 /* History+CoreDataProperties.swift */,
 				7BEE605B265EA99400A9A450 /* BTC+CoreDataClass.swift */,
 				7BEE605C265EA99400A9A450 /* BTC+CoreDataProperties.swift */,
-				7BD4118D261C7A5E00656B40 /* Model.xcdatamodeld */,
 			);
-			path = Helpers;
+			path = NSManagedObject;
 			sourceTree = "<group>";
 		};
 		7B56DAA22661100A0061C4C3 /* Helpers */ = {
