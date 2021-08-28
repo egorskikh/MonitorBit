@@ -30,6 +30,16 @@ class BtcVC: UIViewController {
         buttonItem.tintColor = .white
         return buttonItem
     }()
+
+    private lazy var sortingButtonItem: UIBarButtonItem = {
+        let image = UIImage(systemName: "arrow.up.arrow.down")
+        let buttonItem = UIBarButtonItem(image: image,
+                                         style: .done ,
+                                         target: self,
+                                         action: #selector(fetchJSONTapped))
+        buttonItem.tintColor = .white
+        return buttonItem
+    }()
     
     // MARK: - View Life Cicle
     override func viewDidLoad() {
@@ -95,7 +105,8 @@ extension BtcVC {
         view.backgroundColor = .lightGray
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItems = [ saveToCoreDataButtonItem,
-                                               fetchJSONButtonItem ]
+                                               sortingButtonItem]
+        navigationItem.leftBarButtonItems = [ fetchJSONButtonItem ]
     }
     
     // MARK: - Store constraint
@@ -109,7 +120,6 @@ extension BtcVC {
         hiddenConstraint.priority = UILayoutPriority.required - 1
         btcViewModel.visibleConstraint = btcView.collectionView.heightAnchor.constraint(equalTo: view.widthAnchor,
                                                                                         multiplier: 1 / 4)
-        
         
         NSLayoutConstraint.activate([
             btcView.dateLbl.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -132,25 +142,21 @@ extension BtcVC {
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
 extension BtcVC: UITableViewDataSource, UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 91
-    }
-    
+
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         view.tintColor = UIColor.lightGray
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.textColor = UIColor.black
     }
-    
+
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "price history"
     }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 91
     }
-    
+
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
         return btcViewModel.numberOfRowsTableView()
@@ -192,6 +198,7 @@ extension BtcVC: UITableViewDataSource, UITableViewDelegate {
 }
 
 // MARK: - UICollectionViewDataSource, UICollectionViewDelegate
+
 extension BtcVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
